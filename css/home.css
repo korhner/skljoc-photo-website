@@ -139,6 +139,205 @@
 
 /* Import Services Styles from about.css */
 
+/* Service Card Styles - New Design */
+/* Services Grid - Evenly spaced and aligned */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.service-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 35px 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    background-color: white;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    min-height: 600px;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.service-header {
+    margin-bottom: 25px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.service-card h3 emoji {
+    font-size: 1.6rem;
+    margin-right: 5px;
+}
+
+.service-price {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    height: 70px;
+    justify-content: center;
+}
+
+.service-price .price {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+.service-price .price-period {
+    font-size: 1rem;
+    color: var(--light-text);
+    margin-left: 8px;
+}
+
+.service-description {
+    color: var(--light-text);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.service-divider {
+    border: 0;
+    height: 1px;
+    background-color: rgba(212, 159, 145, 0.2);
+    margin: 0 0 25px 0;
+}
+
+.service-features {
+    flex-grow: 1;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    height: 180px;
+    overflow: auto;
+}
+
+.service-features ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.service-features ul li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.service-features i {
+    color: var(--secondary-color);
+    margin-right: 12px;
+    font-size: 0.85rem;
+    background-color: rgba(212, 159, 145, 0.15);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Package Options Styles */
+.package-options {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    height: 380px;
+}
+
+.package-selector {
+    display: flex;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 159, 145, 0.3);
+    background-color: #ffffff;
+}
+
+.package-tab {
+    padding: 12px 20px;
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    color: var(--light-text);
+    position: relative;
+}
+
+.package-tab.active {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.package-details {
+    display: none;
+    padding: 20px;
+    background-color: rgba(212, 159, 145, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(212, 159, 145, 0.1);
+    animation: fadeIn 0.3s ease;
+    height: 280px;
+    flex-direction: column;
+}
+
+.package-details.active {
+    display: flex;
+}
+
+.package-details.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.package-solo {
+    padding: 20px;
+    background-color: rgba(212, 159, 145, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(212, 159, 145, 0.1);
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-service {
+    width: 100%;
+    text-align: center;
+    border-radius: 6px;
+    font-weight: 500;
+    padding: 14px 20px;
+    margin-top: auto;
+}
+
 /* Featured Work */
 .featured-work {
     padding: 100px 0;
@@ -180,6 +379,15 @@
     .section-header h2 {
         font-size: 2.4rem;
     }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .service-price .price {
+        font-size: 2.2rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -210,6 +418,20 @@
 
     .testimonial-container {
         grid-template-columns: 1fr;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .service-card {
+        padding: 30px 25px;
+    }
+
+    .service-price .price {
+        font-size: 2.3rem;
     }
 }
 
