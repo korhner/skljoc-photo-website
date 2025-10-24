@@ -9,24 +9,24 @@ const categories = [
   { id: 'artistic', label: 'Umetnost' }
 ];
 
-// Gallery items data
+// Gallery items data with varied dimensions for natural masonry layout
 const galleryItems = [
   // Portraits
-  { src: '/images/portfolio/portraits/portrait-1.jpg', alt: 'Portret 1', category: 'portraits', title: 'Elegantni portret' },
-  { src: '/images/portfolio/portraits/portrait-2.jpg', alt: 'Portret 2', category: 'portraits', title: 'Prirodni portret' },
-  { src: '/images/portfolio/portraits/portrait-3.jpg', alt: 'Portret 3', category: 'portraits', title: 'Studio portret' },
-  { src: '/images/portfolio/portraits/portrait-4.jpg', alt: 'Portret 4', category: 'portraits', title: 'Lifestyle portret' },
+  { src: '/images/portfolio/portraits/portrait-1.jpg', alt: 'Portret 1', category: 'portraits', title: 'Elegantni portret', width: 800, height: 1200 },
+  { src: '/images/portfolio/portraits/portrait-2.jpg', alt: 'Portret 2', category: 'portraits', title: 'Prirodni portret', width: 800, height: 800 },
+  { src: '/images/portfolio/portraits/portrait-3.jpg', alt: 'Portret 3', category: 'portraits', title: 'Studio portret', width: 800, height: 1067 },
+  { src: '/images/portfolio/portraits/portrait-4.jpg', alt: 'Portret 4', category: 'portraits', title: 'Lifestyle portret', width: 800, height: 600 },
 
   // Children
-  { src: '/images/portfolio/children/child-1.jpg', alt: 'Dečiji događaj 1', category: 'children', title: 'Rođendanska proslava' },
-  { src: '/images/portfolio/children/child-2.jpg', alt: 'Dečiji događaj 2', category: 'children', title: 'Dečija igra' },
-  { src: '/images/portfolio/children/child-3.jpg', alt: 'Dečiji događaj 3', category: 'children', title: 'Porodično okupljanje' },
-  { src: '/images/portfolio/children/child-4.jpg', alt: 'Dečiji događaj 4', category: 'children', title: 'Radosni trenuci' },
+  { src: '/images/portfolio/children/child-1.jpg', alt: 'Dečiji događaj 1', category: 'children', title: 'Rođendanska proslava', width: 800, height: 600 },
+  { src: '/images/portfolio/children/child-2.jpg', alt: 'Dečiji događaj 2', category: 'children', title: 'Dečija igra', width: 800, height: 1200 },
+  { src: '/images/portfolio/children/child-3.jpg', alt: 'Dečiji događaj 3', category: 'children', title: 'Porodično okupljanje', width: 800, height: 800 },
+  { src: '/images/portfolio/children/child-4.jpg', alt: 'Dečiji događaj 4', category: 'children', title: 'Radosni trenuci', width: 800, height: 1067 },
 
   // Artistic
-  { src: '/images/portfolio/artistic/art-1.jpg', alt: 'Umetnička fotografija 1', category: 'artistic', title: 'Kreativni portret' },
-  { src: '/images/portfolio/artistic/art-2.jpg', alt: 'Umetnička fotografija 2', category: 'artistic', title: 'Konceptualna fotografija' },
-  { src: '/images/portfolio/artistic/art-3.jpg', alt: 'Umetnička fotografija 3', category: 'artistic', title: 'Fine art portret' }
+  { src: '/images/portfolio/artistic/art-1.jpg', alt: 'Umetnička fotografija 1', category: 'artistic', title: 'Kreativni portret', width: 800, height: 1200 },
+  { src: '/images/portfolio/artistic/art-2.jpg', alt: 'Umetnička fotografija 2', category: 'artistic', title: 'Konceptualna fotografija', width: 800, height: 600 },
+  { src: '/images/portfolio/artistic/art-3.jpg', alt: 'Umetnička fotografija 3', category: 'artistic', title: 'Fine art portret', width: 800, height: 800 }
 ];
 ---
 
@@ -51,14 +51,16 @@ const galleryItems = [
       <!-- Category Tabs -->
       <CategoryTabs categories={categories} />
 
-      <!-- Gallery Grid -->
-      <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <!-- Gallery Masonry Layout -->
+      <div id="gallery" class="masonry-gallery">
         {galleryItems.map((item) => (
           <GalleryItem
             src={item.src}
             alt={item.alt}
             category={item.category as 'portraits' | 'children' | 'artistic'}
             title={item.title}
+            width={item.width}
+            height={item.height}
           />
         ))}
       </div>
@@ -124,6 +126,26 @@ const galleryItems = [
     const categoryTabs = document.querySelectorAll('.category-tab');
     const galleryItems = document.querySelectorAll('.gallery-item');
 
+    // Initialize: Hide items that don't match the initially active category
+    const activeTab = document.querySelector('.category-tab.active');
+    const initialCategory = activeTab ? activeTab.getAttribute('data-category') : 'all';
+
+    galleryItems.forEach(item => {
+      const itemCategory = item.getAttribute('data-category');
+      const shouldShow = initialCategory === 'all' || itemCategory === initialCategory;
+
+      if (!shouldShow) {
+        item.classList.add('hidden');
+      }
+    });
+
+    // Remove initial animations after they've played once
+    setTimeout(() => {
+      galleryItems.forEach(item => {
+        item.style.animation = 'none';
+      });
+    }, 1000);
+
     categoryTabs.forEach(tab => {
       tab.addEventListener('click', () => {
         // Update active state
@@ -146,25 +168,17 @@ const galleryItems = [
         // Get category
         const category = tab.getAttribute('data-category');
 
-        // Filter items
-        galleryItems.forEach(item => {
+        // Instant filtering with no transitions
+        galleryItems.forEach((item) => {
           const itemCategory = item.getAttribute('data-category');
+          const shouldShow = category === 'all' || itemCategory === category;
 
-          if (category === 'all' || itemCategory === category) {
-            item.style.display = '';
-            // Add fade in animation
-            item.style.opacity = '0';
-            setTimeout(() => {
-              item.style.transition = 'opacity 0.5s ease';
-              item.style.opacity = '1';
-            }, 10);
+          if (shouldShow) {
+            // Show item instantly
+            item.classList.remove('hidden');
           } else {
-            // Fade out animation
-            item.style.transition = 'opacity 0.5s ease';
-            item.style.opacity = '0';
-            setTimeout(() => {
-              item.style.display = 'none';
-            }, 500);
+            // Hide item instantly
+            item.classList.add('hidden');
           }
         });
       });

@@ -36,6 +36,67 @@
     @apply text-secondary;
   }
 
+  /* Masonry Gallery Layout */
+  .masonry-gallery {
+    column-count: 1;
+    column-gap: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .masonry-gallery {
+      column-count: 2;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .masonry-gallery {
+      column-count: 3;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .masonry-gallery {
+      column-count: 4;
+    }
+  }
+
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+  }
+
+  /* Hidden state for filtered items - simple display none */
+  .masonry-item.hidden {
+    display: none !important;
+  }
+
+  /* Stagger animation for gallery items - only on initial page load */
+  .masonry-item:nth-child(1) { animation-delay: 0.05s; }
+  .masonry-item:nth-child(2) { animation-delay: 0.10s; }
+  .masonry-item:nth-child(3) { animation-delay: 0.15s; }
+  .masonry-item:nth-child(4) { animation-delay: 0.20s; }
+  .masonry-item:nth-child(5) { animation-delay: 0.25s; }
+  .masonry-item:nth-child(6) { animation-delay: 0.30s; }
+  .masonry-item:nth-child(7) { animation-delay: 0.35s; }
+  .masonry-item:nth-child(8) { animation-delay: 0.40s; }
+  .masonry-item:nth-child(9) { animation-delay: 0.45s; }
+  .masonry-item:nth-child(10) { animation-delay: 0.50s; }
+  .masonry-item:nth-child(11) { animation-delay: 0.55s; }
+  .masonry-item:nth-child(12) { animation-delay: 0.60s; }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   /* Gallery item hover effect */
   .gallery-overlay {
     @apply absolute inset-0 bg-black bg-opacity-50 opacity-0
