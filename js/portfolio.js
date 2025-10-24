@@ -1,88 +1,78 @@
+// PhotoSwipe Initialization and Filtering
 document.addEventListener('DOMContentLoaded', function() {
-    // Wait for jQuery to load
-    const checkJQuery = setInterval(function() {
-        if (window.jQuery) {
-            clearInterval(checkJQuery);
-            initializeGallery();
-        }
-    }, 100);
+    // References to DOM elements
+    const galleryElement = document.getElementById('gallery');
+    const categoryTabs = document.querySelectorAll('.category-tab');
+    const galleryItems = document.querySelectorAll('.gallery-item');
 
-    function initializeGallery() {
-        // Initialize Justified Gallery
-        $("#justified-gallery").justifiedGallery({
-            rowHeight: 300,
-            margins: 10,
-            lastRow: 'nojustify',
-            captions: false,
-            border: 0,
-            selector: '.gallery-item:not(.hidden)'
+    // Initialize PhotoSwipe with global UMD objects
+    if (typeof PhotoSwipeLightbox !== 'undefined') {
+        const lightbox = new PhotoSwipeLightbox({
+            gallery: '#gallery',
+            children: 'a',
+            arrowPrev: true,
+            arrowNext: true,
+            counter: true,
+            zoom: true,
+            escKey: true,
+            close: true,
+            click: true,
+            bgOpacity: 0.8,
+            showHideAnimationType: 'fade',
+            pswpModule: PhotoSwipe
         });
 
-        // Portfolio filtering
-        const categoryTabs = document.querySelectorAll('.category-tab');
-        const galleryItems = document.querySelectorAll('.gallery-item');
+        // Initialize PhotoSwipe
+        lightbox.init();
 
-        categoryTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Update active tab
-                categoryTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
+        // Make it globally available
+        window.photoswipeLightbox = lightbox;
+    } else {
+        console.error('PhotoSwipe not loaded correctly');
+    }
 
-                const category = tab.dataset.category;
+    // Set up category filtering
+    categoryTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Update active state
+            categoryTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
 
-                // Filter gallery items and prepare for re-layout
-                let visibleCount = 0;
-                galleryItems.forEach(item => {
-                    if (category === 'all' || item.dataset.category === category) {
-                        item.classList.remove('hidden');
-                        item.style.display = '';
-                        visibleCount++;
-                    } else {
-                        item.classList.add('hidden');
-                        item.style.display = 'none';
-                    }
-                });
+            // Get category
+            const category = tab.dataset.category;
 
-                // Force layout recalculation
-                $("#justified-gallery").justifiedGallery('destroy');
-
-                // Re-initialize with only visible items
-                $("#justified-gallery").justifiedGallery({
-                    rowHeight: 300,
-                    margins: 10,
-                    lastRow: 'nojustify',
-                    captions: false,
-                    border: 0,
-                    selector: '.gallery-item:not(.hidden)'
-                });
-            });
+            // Filter items
+            filterGallery(category);
         });
+    });
 
-        // Configure Lightbox2
-        lightbox.option({
-            'resizeDuration': 300,
-            'wrapAround': true,
-            'albumLabel': 'Slika %1 od %2',
-            'fadeDuration': 300,
-            'positionFromTop': 100,
-            'showImageNumberLabel': false,
-            'fitImagesInViewport': true,
-            'maxWidth': 2000,
-            'maxHeight': 2000
-        });
-
-        // Ensure images load properly
-        const galleryImages = document.querySelectorAll('.gallery-item img');
-        galleryImages.forEach(img => {
-            img.onload = function() {
-                this.style.opacity = 1;
-            };
-
-            if (img.complete) {
-                img.style.opacity = 1;
+    // Filter gallery items by category
+    function filterGallery(category) {
+        galleryItems.forEach(item => {
+            if (category === 'all' || item.dataset.category === category) {
+                item.style.display = '';
+                fadeIn(item);
             } else {
-                img.style.opacity = 0;
+                fadeOut(item);
             }
         });
+    }
+
+    // Fade in animation
+    function fadeIn(element) {
+        element.style.opacity = '0';
+        setTimeout(() => {
+            element.style.transition = 'opacity 0.5s ease';
+            element.style.opacity = '1';
+        }, 10);
+    }
+
+    // Fade out animation
+    function fadeOut(element) {
+        element.style.transition = 'opacity 0.5s ease';
+        element.style.opacity = '0';
+        setTimeout(() => {
+            element.style.display = 'none';
+        }, 500);
     }
 });
