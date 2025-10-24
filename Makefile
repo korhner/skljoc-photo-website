@@ -17,7 +17,7 @@ NC := \033[0m # No Color
 .DEFAULT_GOAL := help
 
 # Phony targets
-.PHONY: help install dev build preview clean test lint format check deploy setup update
+.PHONY: help install dev build preview clean test lint format check deploy setup update portfolio portfolio-clean portfolio-watch
 
 ## help: Display this help message
 help:
@@ -171,6 +171,32 @@ check-links: build
 		echo "$(YELLOW)⚠ linkchecker not installed$(NC)"; \
 		echo "Install with: pip install linkchecker"; \
 	fi
+
+## portfolio: Process all portfolio images and generate data
+portfolio:
+	@echo "$(BLUE)Processing portfolio images...$(NC)"
+	@echo "$(YELLOW)━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━$(NC)"
+	@echo "Place images in: src/images/originals/{portraits,children,artistic}/"
+	@echo "Naming format: category-number_title-with-dashes.jpg"
+	@echo "$(YELLOW)━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━$(NC)"
+	@node scripts/process-portfolio.js
+	@echo "$(GREEN)✓ Portfolio processing complete$(NC)"
+
+## portfolio-clean: Clean processed portfolio images
+portfolio-clean:
+	@echo "$(BLUE)Cleaning processed portfolio images...$(NC)"
+	rm -rf public/images/portfolio/*
+	rm -f scripts/.image-cache.json
+	rm -f scripts/.processed-images.json
+	rm -f src/data/portfolio-images.ts
+	@echo "$(GREEN)✓ Portfolio cleaned$(NC)"
+
+## portfolio-watch: Watch for portfolio changes and auto-process
+portfolio-watch:
+	@echo "$(BLUE)Watching portfolio images for changes...$(NC)"
+	@echo "$(YELLOW)Place new images in src/images/originals/$(NC)"
+	@echo "$(YELLOW)Press Ctrl+C to stop$(NC)"
+	@node scripts/process-portfolio.js --watch
 
 ## info: Display project information
 info:

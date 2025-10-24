@@ -2,32 +2,26 @@
 import BaseLayout from '@components/layout/BaseLayout.astro';
 import CategoryTabs from '@components/ui/CategoryTabs.astro';
 import GalleryItem from '@components/ui/GalleryItem.astro';
+import fs from 'fs';
+import path from 'path';
 
-const categories = [
-  { id: 'portraits', label: 'Portreti' },
-  { id: 'children', label: 'Dečiji događaji' },
-  { id: 'artistic', label: 'Umetnost' }
-];
+// Try to load generated portfolio data, fallback to hardcoded if not available
+let galleryItems;
+let categories;
 
-// Gallery items data with varied dimensions for natural masonry layout
-const galleryItems = [
-  // Portraits
-  { src: '/images/portfolio/portraits/portrait-1.jpg', alt: 'Portret 1', category: 'portraits', title: 'Elegantni portret', width: 800, height: 1200 },
-  { src: '/images/portfolio/portraits/portrait-2.jpg', alt: 'Portret 2', category: 'portraits', title: 'Prirodni portret', width: 800, height: 800 },
-  { src: '/images/portfolio/portraits/portrait-3.jpg', alt: 'Portret 3', category: 'portraits', title: 'Studio portret', width: 800, height: 1067 },
-  { src: '/images/portfolio/portraits/portrait-4.jpg', alt: 'Portret 4', category: 'portraits', title: 'Lifestyle portret', width: 800, height: 600 },
+const generatedDataPath = path.join(process.cwd(), 'src/data/portfolio-images.ts');
 
-  // Children
-  { src: '/images/portfolio/children/child-1.jpg', alt: 'Dečiji događaj 1', category: 'children', title: 'Rođendanska proslava', width: 800, height: 600 },
-  { src: '/images/portfolio/children/child-2.jpg', alt: 'Dečiji događaj 2', category: 'children', title: 'Dečija igra', width: 800, height: 1200 },
-  { src: '/images/portfolio/children/child-3.jpg', alt: 'Dečiji događaj 3', category: 'children', title: 'Porodično okupljanje', width: 800, height: 800 },
-  { src: '/images/portfolio/children/child-4.jpg', alt: 'Dečiji događaj 4', category: 'children', title: 'Radosni trenuci', width: 800, height: 1067 },
-
-  // Artistic
-  { src: '/images/portfolio/artistic/art-1.jpg', alt: 'Umetnička fotografija 1', category: 'artistic', title: 'Kreativni portret', width: 800, height: 1200 },
-  { src: '/images/portfolio/artistic/art-2.jpg', alt: 'Umetnička fotografija 2', category: 'artistic', title: 'Konceptualna fotografija', width: 800, height: 600 },
-  { src: '/images/portfolio/artistic/art-3.jpg', alt: 'Umetnička fotografija 3', category: 'artistic', title: 'Fine art portret', width: 800, height: 800 }
-];
+if (fs.existsSync(generatedDataPath)) {
+  // Use generated data
+  const portfolioData = await import('../data/portfolio-images.ts');
+  galleryItems = portfolioData.galleryItems;
+  categories = portfolioData.categories;
+} else {
+  // Use fallback data (current hardcoded images)
+  const fallbackData = await import('../data/portfolio-images-fallback.ts');
+  galleryItems = fallbackData.fallbackGalleryItems;
+  categories = fallbackData.categories;
+}
 ---
 
 <BaseLayout
