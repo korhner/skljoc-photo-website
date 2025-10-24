@@ -1,94 +1,162 @@
-# Skljoc Photo by Dragana Korhner Website
+# Škljoc Photo
 
-A personal brand website for a photographer specializing in portrait photography and children's birthday parties with a minimalist, neutral aesthetic.
+A modern photography portfolio website built with **Astro**, **Tailwind CSS**, and **PhotoSwipe** for Škljoc Photo by Dragana Korhner.
 
-## Project Overview
+## 🚀 Technology Stack
 
-This is a responsive photography portfolio website that includes:
+- **[Astro](https://astro.build/)** - Static Site Generator with component-based architecture
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[PhotoSwipe](https://photoswipe.com/)** - JavaScript image gallery with mobile touch gestures
+- **TypeScript** - Type safety and better developer experience
 
-- Homepage with featured works
-- Portfolio gallery with filtering by category
-- About page with services information
-- Contact page with form and FAQ
+## 📁 Project Structure
 
-## Features
+```
+.
+├── src/
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── BaseLayout.astro    # Main layout with SEO
+│   │   │   ├── Header.astro        # Navigation header
+│   │   │   └── Footer.astro        # Site footer
+│   │   └── ui/
+│   │       ├── Button.astro        # Reusable button component
+│   │       ├── CategoryTabs.astro  # Gallery filtering tabs
+│   │       ├── ContactForm.astro   # Contact form with validation
+│   │       ├── GalleryItem.astro   # Gallery image component
+│   │       └── PackageSelector.astro # Service package selector
+│   ├── pages/
+│   │   ├── index.astro     # Homepage
+│   │   ├── portfolio.astro # Gallery with PhotoSwipe
+│   │   ├── about.astro     # About page
+│   │   └── contact.astro   # Contact page
+│   └── styles/
+│       └── global.css      # Global styles and Tailwind directives
+├── public/
+│   └── images/            # All image assets
+├── astro.config.mjs       # Astro configuration
+├── tailwind.config.mjs    # Tailwind configuration
+├── Makefile               # Build automation
+└── package.json           # Dependencies and scripts
+```
 
-- Mobile-responsive design optimized for all screen sizes
-- Clean, minimalist aesthetic with a neutral color palette
-- Image gallery with category filtering
-- Contact form with validation
-- Fully responsive navigation menu
+## 🎨 Design System
 
-## Getting Started
+### Colors
+- **Primary**: `#f9e8ce` - Warm beige
+- **Secondary**: `#d49f91` - Dusty rose
+- **Accent**: `#c08a7d` - Muted terracotta
+- **Text Dark**: `#3e3230` - Dark brown
+- **Text Light**: `#7e6966` - Light brown
 
-1. Replace placeholder images in the `images` directory with your own photography
-2. Update personal information and text throughout the site
-3. Customize colors and styling in CSS files if desired
-4. Add your social media links in the navigation and footer
-5. Deploy to your preferred hosting provider
+### Fonts
+- **Headings**: Playfair Display (serif)
+- **Body**: Montserrat (sans-serif)
 
-## Customization
+## 🚀 Getting Started
 
-### Changing Colors
+### Prerequisites
+- Node.js 18+
+- npm or yarn
 
-The color scheme is defined in the CSS variables in `css/style.css`. Update the following variables to change the color palette:
+### Installation
 
-```css
-:root {
-    --primary-color: #f9e8ce;
-    --secondary-color: #d49f91;
-    --accent-color: #c08a7d;
-    --text-color: #3e3230;
-    --light-text: #7e6966;
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## 🌟 Features
+
+### Component-Based Architecture
+- Reusable Astro components for consistent UI
+- Type-safe props with TypeScript interfaces
+- Modular structure for easy maintenance
+
+### Performance Optimizations
+- Static site generation for fast loading
+- Optimized images with lazy loading
+- Minimal JavaScript bundle with PhotoSwipe on-demand
+- Tailwind CSS purging unused styles
+
+### SEO & Accessibility
+- Structured data (JSON-LD) for better search visibility
+- Open Graph and Twitter Card meta tags
+- Semantic HTML structure
+- ARIA labels for interactive elements
+- Serbian language support (`lang="sr"`)
+
+### Responsive Design
+- Mobile-first approach with Tailwind breakpoints
+- Hamburger menu for mobile navigation
+- Responsive image galleries
+- Touch-friendly PhotoSwipe lightbox
+
+## 🔧 Development
+
+### Adding New Pages
+Create a new `.astro` file in `src/pages/`:
+```astro
+---
+import BaseLayout from '@components/layout/BaseLayout.astro';
+---
+
+<BaseLayout title="Page Title">
+  <!-- Page content -->
+</BaseLayout>
+```
+
+### Creating Components
+Add new components to `src/components/ui/`:
+```astro
+---
+export interface Props {
+  // Define component props
 }
+
+const { /* props */ } = Astro.props;
+---
+
+<!-- Component markup -->
 ```
 
-### Adding Portfolio Items
+### Customizing Styles
+- Edit Tailwind config in `tailwind.config.mjs`
+- Add global styles in `src/styles/global.css`
+- Use Tailwind utilities directly in components
 
-To add new items to your portfolio gallery:
+## 📱 Browser Support
 
-1. Add your images to the `images` directory
-2. Edit the `portfolio.html` file
-3. Add new `.gallery-item` elements with the appropriate `data-category` attribute
-4. Update the image path and overlay information
-
-### Contact Form Integration
-
-The contact form is currently set up for demonstration purposes only. To make it functional:
-
-1. Choose a form handling service (e.g., Formspree, Netlify Forms)
-2. Update the form action in `contact.html`
-3. Modify the form handling in `js/contact.js` as needed
-
-## Directory Structure
-
-```
-skljoc-photo/
-│
-├── css/
-│   ├── style.css        # Main styles
-│   ├── portfolio.css    # Portfolio page styles
-│   ├── about.css        # About page styles
-│   └── contact.css      # Contact page styles
-│
-├── js/
-│   ├── script.js        # Main JavaScript
-│   ├── portfolio.js     # Portfolio filtering
-│   └── contact.js       # Contact form handling
-│
-├── images/              # Images directory
-│
-├── index.html           # Homepage
-├── portfolio.html       # Portfolio page
-├── about.html           # About page
-└── contact.html         # Contact page
-```
-
-## Browser Compatibility
-
-This website is compatible with:
 - Chrome (latest)
 - Firefox (latest)
 - Safari (latest)
 - Edge (latest)
 - Mobile browsers (iOS/Android)
+
+## 🚀 Deployment
+
+Build the project and deploy the `dist/` folder to any static hosting service:
+
+```bash
+npm run build
+```
+
+Compatible with:
+- Netlify
+- Vercel
+- GitHub Pages
+- Cloudflare Pages
+- Any static file host
+
+## 📄 License
+
+© 2025 Škljoc Foto by Dragana Korhner. All rights reserved.

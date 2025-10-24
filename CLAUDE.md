@@ -4,46 +4,57 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a static photography portfolio website for "Škljoc Foto" - a photographer specializing in children's birthday parties and portrait photography in Belgrade, Serbia. The website is built with vanilla HTML, CSS, and JavaScript without any build process or framework dependencies.
+This is a modern photography portfolio website for "Škljoc Foto" - a photographer specializing in children's birthday parties and portrait photography in Belgrade, Serbia. The website is built with Astro, Tailwind CSS, and PhotoSwipe for optimal performance and developer experience.
 
 ## Architecture
 
 ### Core Structure
-- **Static HTML pages**: Each page is a standalone HTML file (`index.html`, `portfolio.html`, `about.html`, `contact.html`)
-- **Modular CSS**: Separate CSS files for each page plus a shared `style.css` for common styles
-- **Vanilla JavaScript**: Minimal JS for interactivity (mobile menu, gallery filtering, contact forms)
-- **No build process**: Direct file serving, no compilation or bundling required
+- **Astro Pages**: Component-based pages in `src/pages/` (index, portfolio, about, contact)
+- **Tailwind CSS**: Utility-first CSS with custom color palette and typography
+- **Reusable Components**: Modular Astro components in `src/components/`
+- **Static Generation**: Astro builds to static HTML/CSS/JS for optimal performance
+- **TypeScript Support**: Type-safe props and interfaces
 
 ### Key Components
 
-**Portfolio Gallery System** (`portfolio.html` + `js/portfolio.js`):
-- Uses PhotoSwipe library for lightbox functionality (loaded via CDN)
-- Category-based filtering with data attributes (`data-category`)
-- Tabs for category selection: All, Portraits, Children, Artistic
-- Fade animations for smooth transitions
+**Layout Components** (`src/components/layout/`):
+- `BaseLayout.astro`: Main layout with SEO meta tags and structured data
+- `Header.astro`: Responsive navigation with mobile menu
+- `Footer.astro`: Site footer with social links
 
-**Navigation System**:
-- Responsive mobile menu with hamburger toggle
-- Active page highlighting in navigation
-- Implemented in `js/script.js`
-
-**Package Selector** (on homepage and about page):
-- Tab-based package switcher for service offerings
-- Dynamic content display based on selected package
+**UI Components** (`src/components/ui/`):
+- `GalleryItem.astro`: Individual gallery items with PhotoSwipe integration
+- `CategoryTabs.astro`: Gallery filtering tabs
+- `ContactForm.astro`: Contact form with client-side validation
+- `PackageSelector.astro`: Service package tabs
+- `Button.astro`: Reusable button with variants
 
 ## Development
 
 ### Running the Site Locally
 ```bash
-# Using Python's built-in server
-python3 -m http.server 8000
+# Install dependencies
+npm install
 
-# Then open http://localhost:8000 in browser
+# Start development server
+npm run dev
+# or use Makefile
+make dev
+
+# Build for production
+npm run build
+# or
+make build
+
+# Preview production build
+npm run preview
+# or
+make preview
 ```
 
 ### Testing Responsive Design
-- Test at breakpoints: 768px (tablet), 480px (mobile)
-- Mobile menu activates below 768px width
+- Test at Tailwind breakpoints: sm (640px), md (768px), lg (1024px)
+- Mobile menu activates below md breakpoint
 - Gallery grid adjusts columns based on viewport
 
 ## Important Considerations
