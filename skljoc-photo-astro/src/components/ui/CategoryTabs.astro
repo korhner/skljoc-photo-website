@@ -1,0 +1,44 @@
+---
+export interface Props {
+  categories: Array<{
+    id: string;
+    label: string;
+  }>;
+}
+
+const { categories } = Astro.props;
+---
+
+<div class="flex justify-center flex-wrap gap-2 mb-8">
+  <button
+    class="category-tab relative px-5 py-2 font-body text-sm tracking-wider uppercase text-text-dark transition-colors hover:text-secondary active"
+    data-category="all"
+  >
+    Sve
+    <span class="category-tab-underline w-full"></span>
+  </button>
+
+  {categories.map((category) => (
+    <button
+      class="category-tab relative px-5 py-2 font-body text-sm tracking-wider uppercase text-text-dark transition-colors hover:text-secondary"
+      data-category={category.id}
+    >
+      {category.label}
+      <span class="category-tab-underline w-0"></span>
+    </button>
+  ))}
+</div>
+
+<style>
+  .category-tab.active {
+    @apply text-secondary font-medium;
+  }
+
+  .category-tab.active .category-tab-underline {
+    @apply w-full;
+  }
+
+  .category-tab:hover .category-tab-underline {
+    @apply w-full;
+  }
+</style>

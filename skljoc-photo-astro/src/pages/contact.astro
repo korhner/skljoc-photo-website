@@ -1,0 +1,221 @@
+---
+import BaseLayout from '@components/layout/BaseLayout.astro';
+import ContactForm from '@components/ui/ContactForm.astro';
+
+const faqs = [
+  {
+    question: 'Koliko unapred treba da rezervišem termin?',
+    answer: 'Za fotografisanje portreta preporučuje se 2-3 nedelje unapred. Za dečije događaje, rezervacija 4-6 nedelja unapred osigurava dostupnost, posebno tokom sezona sa puno posla.'
+  },
+  {
+    question: 'Šta treba da nosimo za naše fotografisanje?',
+    answer: 'Preporučujem neutralnu, bezvremensku odeću bez upadljivih šara ili logotipa. Usklađeni (ne identični) outfiti dobro funkcionišu za porodične sesije. Rado ću pružiti specifične smernice za vaš tip fotografisanja.'
+  },
+  {
+    question: 'Koliko dugo čekamo na fotografije?',
+    answer: 'Digitalne galerije se obično isporučuju u roku od 2 nedelje od vašeg fotografisanja. Ubrzana isporuka može biti dostupna na zahtev uz dodatnu naknadu.'
+  },
+  {
+    question: 'Da li fotografišete u celom Beogradu?',
+    answer: 'Da, pokrivam celo područje Beograda bez naknade za putovanje. Takođe sam dostupna za fotografisanje u Zemunu, Novom Beogradu, Voždovcu, Zvezdari i drugim beogradskim opštinama. Za lokacije van Beograda može se primeniti mala naknada za putovanje.'
+  },
+  {
+    question: 'Kakav je vaš stil fotografisanja?',
+    answer: 'Moj stil je prirodan i dokumentarni, sa fokusom na hvatanje autentičnih emocija i spontanih trenutaka. Kombinujem postavljene portrete sa kandidovanim snimcima kako bih ispričala kompletnu priču vašeg događaja ili sesije.'
+  },
+  {
+    question: 'Da li nudite printove ili albume?',
+    answer: 'Da! Nudim profesionalno printovane fotografije i premium foto albume. Ovi proizvodi su savršeni za poklone ili za čuvanje vaših omiljenih uspomena u fizičkom obliku.'
+  }
+];
+---
+
+<BaseLayout
+  title="Kontakt | Zakažite fotografisanje"
+  description="Kontaktirajte Draganu Korhner za profesionalno fotografisanje dečijih rođendana i portreta u Beogradu. Odgovaramo na sve upite u roku od 24 sata."
+  keywords="kontakt fotograf Beograd, zakazivanje fotografisanja, cene fotografisanja, fotograf za dečije rođendane kontakt"
+>
+  <!-- Hero Section -->
+  <section class="py-24 mt-16 bg-white border-b border-secondary/20">
+    <div class="container text-center">
+      <h1 class="text-4xl md:text-5xl font-heading mb-4">Kontakt</h1>
+      <p class="text-lg text-text-light">
+        Hajde da zajedno sačuvamo vaše <span class="highlight">posebne trenutke</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-16">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Contact Info -->
+        <div>
+          <h2 class="text-3xl font-heading mb-6">
+            Stupimo u <span class="highlight">kontakt</span>
+          </h2>
+          <p class="text-text-light mb-8">
+            Hvala vam što razmatrate mene za vašeg fotografa! Bilo da planirate
+            dečiji rođendan, porodično okupljanje ili želite profesionalne portrete,
+            tu sam da vam pomognem da sačuvate te dragocene trenutke.
+          </p>
+
+          <div class="space-y-6 mb-8">
+            <div class="flex items-start gap-4">
+              <div class="text-secondary text-xl mt-1">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>
+                <h3 class="font-medium text-text-dark mb-1">Telefon</h3>
+                <p class="text-text-light">+381 65 123 4567</p>
+                <p class="text-sm text-text-light">Pon-Pet: 9:00 - 17:00</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="text-secondary text-xl mt-1">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h3 class="font-medium text-text-dark mb-1">Email</h3>
+                <p class="text-text-light">info@skljocphoto.com</p>
+                <p class="text-sm text-text-light">Odgovor u roku od 24 sata</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="text-secondary text-xl mt-1">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h3 class="font-medium text-text-dark mb-1">Lokacija</h3>
+                <p class="text-text-light">Beograd, Srbija</p>
+                <p class="text-sm text-text-light">Dostupna za fotografisanje u celoj Srbiji</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="text-secondary text-xl mt-1">
+                <i class="fab fa-instagram"></i>
+              </div>
+              <div>
+                <h3 class="font-medium text-text-dark mb-1">Instagram</h3>
+                <a
+                  href="https://www.instagram.com/skljoc.foto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-text-light hover:text-secondary transition-colors"
+                >
+                  @skljoc.foto
+                </a>
+                <p class="text-sm text-text-light">Pratite me za najnovije radove</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Response Time -->
+          <div class="bg-primary/20 rounded-lg p-6">
+            <h3 class="font-heading text-lg mb-2">Vreme odgovora</h3>
+            <p class="text-text-light text-sm">
+              Trudim se da odgovorim na sve poruke u roku od 24 sata. Za hitne
+              zahteve, molim vas pozovite me direktno.
+            </p>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div>
+          <div class="bg-white rounded-lg shadow-lg p-8">
+            <h3 class="text-2xl font-heading mb-6">Pošaljite poruku</h3>
+            <ContactForm />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container">
+      <h2 class="text-3xl font-heading text-center mb-12">
+        Često postavljana <span class="highlight">pitanja</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        {faqs.map((faq) => (
+          <div class="bg-white rounded-lg p-6 shadow-sm">
+            <h3 class="font-heading text-lg mb-3">{faq.question}</h3>
+            <p class="text-text-light text-sm">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-text-light mb-4">
+          Imate pitanje koje nije na listi? Slobodno mi pišite!
+        </p>
+        <a
+          href="#contactForm"
+          class="text-secondary hover:text-accent transition-colors font-medium"
+        >
+          Postavite pitanje →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section (Optional) -->
+  <section class="py-16">
+    <div class="container">
+      <div class="bg-primary/10 rounded-lg p-12 text-center">
+        <h2 class="text-3xl font-heading mb-6">
+          Dostupnost za <span class="highlight">fotografisanje</span>
+        </h2>
+        <p class="text-text-light mb-8 max-w-2xl mx-auto">
+          Bazirana sam u Beogradu, ali sam dostupna za fotografisanje širom Srbije.
+          Za destinacijske projekte ili veća putovanja, kontaktirajte me za detalje.
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+          <div class="bg-white rounded-lg p-4">
+            <h4 class="font-medium text-sm">Beograd</h4>
+            <p class="text-xs text-text-light">Bez dodatnih troškova</p>
+          </div>
+          <div class="bg-white rounded-lg p-4">
+            <h4 class="font-medium text-sm">Novi Sad</h4>
+            <p class="text-xs text-text-light">+50€ putni troškovi</p>
+          </div>
+          <div class="bg-white rounded-lg p-4">
+            <h4 class="font-medium text-sm">Niš</h4>
+            <p class="text-xs text-text-light">+80€ putni troškovi</p>
+          </div>
+          <div class="bg-white rounded-lg p-4">
+            <h4 class="font-medium text-sm">Ostalo</h4>
+            <p class="text-xs text-text-light">Po dogovoru</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Kontakt - Škljoc Foto",
+  "description": "Kontaktirajte Draganu Korhner za profesionalno fotografisanje dečijih rođendana i portreta u Beogradu",
+  "url": "https://www.skljocphoto.com/contact",
+  "mainEntity": {
+    "@type": "LocalBusiness",
+    "name": "Škljoc Foto",
+    "telephone": "+38165123456",
+    "email": "info@skljocphoto.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Beograd",
+      "addressCountry": "RS"
+    }
+  }
+}
+</script>

@@ -1,0 +1,80 @@
+---
+import '@styles/global.css';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  keywords?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = "Profesionalni fotograf za dečije rođendane i portrete u Beogradu. Dragana Korhner nudi autentične i prirodne fotografije vaših najdragocenijih trenutaka.",
+  keywords = "fotograf Beograd, dečiji rođendani, fotografisanje rođendana, portreti Beograd, porodični fotograf, profesionalni fotograf",
+  ogImage = "/images/photos/me.jpg"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title} | Škljoc Foto</title>
+  <meta name="description" content={description}>
+  <meta name="keywords" content={keywords}>
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href={canonicalURL}>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:url" content={canonicalURL}>
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="sr_RS">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={ogImage}>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Sitemap -->
+  <link rel="sitemap" href="/sitemap-index.xml">
+</head>
+<body class="text-text-dark bg-white">
+  <Header />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+
+  <!-- Mobile Menu Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+          menuToggle.classList.toggle('active');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

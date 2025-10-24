@@ -1,0 +1,96 @@
+---
+export interface Package {
+  id: string;
+  name: string;
+  description: string;
+  features: string[];
+  price?: string;
+}
+
+export interface Props {
+  packages: Package[];
+  title?: string;
+}
+
+const { packages, title = "Naši paketi" } = Astro.props;
+---
+
+<div class="package-selector">
+  {title && <h3 class="text-2xl font-heading text-center mb-8">{title}</h3>}
+
+  <!-- Package Tabs -->
+  <div class="flex justify-center flex-wrap gap-4 mb-8">
+    {packages.map((pkg, index) => (
+      <button
+        class={`package-tab px-6 py-3 border border-secondary rounded-full text-sm font-body tracking-wider uppercase transition-all ${
+          index === 0 ? 'bg-secondary text-white' : 'bg-transparent text-secondary hover:bg-secondary hover:text-white'
+        }`}
+        data-package={pkg.id}
+      >
+        {pkg.name}
+      </button>
+    ))}
+  </div>
+
+  <!-- Package Details -->
+  <div class="package-options">
+    {packages.map((pkg, index) => (
+      <div
+        class={`package-details ${pkg.id} ${index === 0 ? 'block' : 'hidden'}`}
+        data-package={pkg.id}
+      >
+        <div class="max-w-2xl mx-auto text-center">
+          <h4 class="text-xl font-heading mb-4">{pkg.name}</h4>
+          <p class="text-text-light mb-6">{pkg.description}</p>
+
+          <ul class="space-y-3 mb-6">
+            {pkg.features.map((feature) => (
+              <li class="flex items-center justify-center gap-2">
+                <i class="fas fa-check text-secondary"></i>
+                <span class="text-text-dark">{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          {pkg.price && (
+            <p class="text-2xl font-heading text-secondary">{pkg.price}</p>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const packageTabs = document.querySelectorAll('.package-tab');
+
+    packageTabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        const packageId = this.getAttribute('data-package');
+        const selector = this.closest('.package-selector');
+
+        if (!selector) return;
+
+        // Update tabs
+        selector.querySelectorAll('.package-tab').forEach(t => {
+          t.classList.remove('bg-secondary', 'text-white');
+          t.classList.add('bg-transparent', 'text-secondary');
+        });
+
+        this.classList.remove('bg-transparent', 'text-secondary');
+        this.classList.add('bg-secondary', 'text-white');
+
+        // Update content
+        selector.querySelectorAll('.package-details').forEach(details => {
+          details.classList.add('hidden');
+        });
+
+        const targetDetails = selector.querySelector(`.package-details[data-package="${packageId}"]`);
+        if (targetDetails) {
+          targetDetails.classList.remove('hidden');
+        }
+      });
+    });
+  });
+</script>

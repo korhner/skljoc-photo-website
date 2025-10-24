@@ -1,0 +1,194 @@
+---
+import BaseLayout from '@components/layout/BaseLayout.astro';
+import CategoryTabs from '@components/ui/CategoryTabs.astro';
+import GalleryItem from '@components/ui/GalleryItem.astro';
+
+const categories = [
+  { id: 'portraits', label: 'Portreti' },
+  { id: 'children', label: 'Dečiji događaji' },
+  { id: 'artistic', label: 'Umetnost' }
+];
+
+// Gallery items data
+const galleryItems = [
+  // Portraits
+  { src: '/images/portfolio/portraits/portrait-1.jpg', alt: 'Portret 1', category: 'portraits', title: 'Elegantni portret' },
+  { src: '/images/portfolio/portraits/portrait-2.jpg', alt: 'Portret 2', category: 'portraits', title: 'Prirodni portret' },
+  { src: '/images/portfolio/portraits/portrait-3.jpg', alt: 'Portret 3', category: 'portraits', title: 'Studio portret' },
+  { src: '/images/portfolio/portraits/portrait-4.jpg', alt: 'Portret 4', category: 'portraits', title: 'Lifestyle portret' },
+
+  // Children
+  { src: '/images/portfolio/children/child-1.jpg', alt: 'Dečiji događaj 1', category: 'children', title: 'Rođendanska proslava' },
+  { src: '/images/portfolio/children/child-2.jpg', alt: 'Dečiji događaj 2', category: 'children', title: 'Dečija igra' },
+  { src: '/images/portfolio/children/child-3.jpg', alt: 'Dečiji događaj 3', category: 'children', title: 'Porodično okupljanje' },
+  { src: '/images/portfolio/children/child-4.jpg', alt: 'Dečiji događaj 4', category: 'children', title: 'Radosni trenuci' },
+
+  // Artistic
+  { src: '/images/portfolio/artistic/art-1.jpg', alt: 'Umetnička fotografija 1', category: 'artistic', title: 'Kreativni portret' },
+  { src: '/images/portfolio/artistic/art-2.jpg', alt: 'Umetnička fotografija 2', category: 'artistic', title: 'Konceptualna fotografija' },
+  { src: '/images/portfolio/artistic/art-3.jpg', alt: 'Umetnička fotografija 3', category: 'artistic', title: 'Fine art portret' }
+];
+---
+
+<BaseLayout
+  title="Portfolio | Dečiji rođendani i portreti"
+  description="Pogledajte portfolio fotografija dečijih rođendana i portreta u Beogradu. Dragana Korhner beleži važne trenutke sa profesionalnim pristupom."
+  keywords="fotografije dečijih rođendana, dečiji fotograf Beograd, portfolio fotografa, portretni fotograf, profesionalne fotografije, Škljoc Foto"
+>
+  <!-- Hero Section -->
+  <section class="py-24 mt-16 bg-white border-b border-secondary/20">
+    <div class="container text-center">
+      <h1 class="text-4xl md:text-5xl font-heading mb-4">Portfolio</h1>
+      <p class="text-lg text-text-light">
+        Kolekcija mojih omiljenih <span class="highlight">radova</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Portfolio Gallery -->
+  <section class="py-16">
+    <div class="container">
+      <!-- Category Tabs -->
+      <CategoryTabs categories={categories} />
+
+      <!-- Gallery Grid -->
+      <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {galleryItems.map((item) => (
+          <GalleryItem
+            src={item.src}
+            alt={item.alt}
+            category={item.category as 'portraits' | 'children' | 'artistic'}
+            title={item.title}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PhotoSwipe Root Element -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+      <div class="pswp__ui pswp__ui--hidden">
+        <div class="pswp__top-bar">
+          <div class="pswp__counter"></div>
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<!-- PhotoSwipe CSS -->
+<link rel="stylesheet" href="https://unpkg.com/photoswipe@5.4.4/dist/photoswipe.css">
+
+<!-- PhotoSwipe and Gallery Script -->
+<script>
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+  import 'photoswipe/style.css';
+
+  // Initialize PhotoSwipe
+  document.addEventListener('DOMContentLoaded', function() {
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '#gallery',
+      children: 'a',
+      pswpModule: () => import('photoswipe')
+    });
+
+    lightbox.init();
+
+    // Category filtering
+    const categoryTabs = document.querySelectorAll('.category-tab');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    categoryTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update active state
+        categoryTabs.forEach(t => {
+          t.classList.remove('active');
+          const underline = t.querySelector('.category-tab-underline');
+          if (underline) {
+            underline.classList.remove('w-full');
+            underline.classList.add('w-0');
+          }
+        });
+
+        tab.classList.add('active');
+        const underline = tab.querySelector('.category-tab-underline');
+        if (underline) {
+          underline.classList.remove('w-0');
+          underline.classList.add('w-full');
+        }
+
+        // Get category
+        const category = tab.getAttribute('data-category');
+
+        // Filter items
+        galleryItems.forEach(item => {
+          const itemCategory = item.getAttribute('data-category');
+
+          if (category === 'all' || itemCategory === category) {
+            item.style.display = '';
+            // Add fade in animation
+            item.style.opacity = '0';
+            setTimeout(() => {
+              item.style.transition = 'opacity 0.5s ease';
+              item.style.opacity = '1';
+            }, 10);
+          } else {
+            // Fade out animation
+            item.style.transition = 'opacity 0.5s ease';
+            item.style.opacity = '0';
+            setTimeout(() => {
+              item.style.display = 'none';
+            }, 500);
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": "Portfolio fotografija dečijih rođendana i portreta u Beogradu",
+  "description": "Galerija profesionalnih fotografija dečijih rođendana i portreta u Beogradu",
+  "contentLocation": {
+    "@type": "Place",
+    "name": "Beograd, Srbija"
+  },
+  "creator": {
+    "@type": "Person",
+    "name": "Dragana Korhner",
+    "jobTitle": "Profesionalni fotograf"
+  },
+  "genre": ["Dečija fotografija", "Portretna fotografija"],
+  "thumbnailUrl": "https://www.skljocphoto.com/images/portfolio/portraits/portrait-1.jpg"
+}
+</script>

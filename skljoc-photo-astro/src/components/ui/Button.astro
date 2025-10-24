@@ -1,0 +1,27 @@
+---
+export interface Props {
+  variant?: 'primary' | 'outline';
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  class?: string;
+}
+
+const { variant = 'primary', href, type = 'button', class: className = '' } = Astro.props;
+
+const variantClasses = {
+  primary: 'btn',
+  outline: 'btn btn-outline'
+};
+
+const classes = `${variantClasses[variant]} ${className}`;
+---
+
+{href ? (
+  <a href={href} class={classes}>
+    <slot />
+  </a>
+) : (
+  <button type={type} class={classes}>
+    <slot />
+  </button>
+)}

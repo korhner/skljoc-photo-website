@@ -1,0 +1,38 @@
+---
+export interface Props {
+  src: string;
+  alt: string;
+  category: 'portraits' | 'children' | 'artistic';
+  width?: number;
+  height?: number;
+  title?: string;
+}
+
+const { src, alt, category, width = 800, height = 600, title } = Astro.props;
+---
+
+<div
+  class="gallery-item relative overflow-hidden rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
+  data-category={category}
+>
+  <a
+    href={src}
+    data-pswp-width={width}
+    data-pswp-height={height}
+    class="block relative group"
+  >
+    <img
+      src={src}
+      alt={alt}
+      class="w-full h-full object-cover"
+      loading="lazy"
+    />
+
+    <div class="gallery-overlay">
+      <div class="text-white text-center">
+        <i class="fas fa-expand text-2xl mb-2"></i>
+        {title && <p class="text-sm font-light">{title}</p>}
+      </div>
+    </div>
+  </a>
+</div>

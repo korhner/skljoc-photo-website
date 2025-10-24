@@ -1,0 +1,85 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: '/', label: 'Početna' },
+  { href: '/portfolio', label: 'Portfolio' },
+  { href: '/about', label: 'O meni' },
+  { href: '/contact', label: 'Kontakt' }
+];
+
+const isActive = (href: string) => {
+  if (href === '/') {
+    return currentPath === href;
+  }
+  return currentPath.startsWith(href);
+};
+---
+
+<header class="fixed top-0 left-0 right-0 bg-white z-50 shadow-sm">
+  <div class="container">
+    <nav class="flex justify-between items-center py-4">
+      <!-- Logo -->
+      <a href="/" class="logo text-2xl font-heading text-text-dark hover:text-accent transition-colors">
+        Škljoc Foto
+      </a>
+
+      <!-- Mobile Menu Toggle -->
+      <div class="menu-toggle md:hidden flex flex-col gap-1 cursor-pointer">
+        <span class="block w-6 h-0.5 bg-text-dark transition-all"></span>
+        <span class="block w-6 h-0.5 bg-text-dark transition-all"></span>
+        <span class="block w-6 h-0.5 bg-text-dark transition-all"></span>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <ul class="hidden md:flex items-center gap-8">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class={`text-sm font-body tracking-wider uppercase transition-colors hover:text-secondary ${
+                isActive(item.href) ? 'text-secondary font-medium' : 'text-text-dark'
+              }`}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Mobile Navigation -->
+      <ul class="nav-links fixed top-16 right-0 w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 md:hidden">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class={`block px-6 py-3 text-sm font-body tracking-wider uppercase transition-colors hover:bg-primary ${
+                isActive(item.href) ? 'text-secondary font-medium' : 'text-text-dark'
+              }`}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .nav-links.active {
+    transform: translateX(0);
+  }
+</style>

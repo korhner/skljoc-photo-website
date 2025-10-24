@@ -1,0 +1,243 @@
+---
+import BaseLayout from '@components/layout/BaseLayout.astro';
+import Button from '@components/ui/Button.astro';
+import PackageSelector from '@components/ui/PackageSelector.astro';
+
+const packages = [
+  {
+    id: 'basic',
+    name: 'Osnovni',
+    description: 'Savršen za intimne proslave',
+    features: [
+      '1 sat fotografisanja',
+      '30+ editovanih fotografija',
+      'Online galerija',
+      'Pravo preuzimanja'
+    ],
+    price: '€150'
+  },
+  {
+    id: 'standard',
+    name: 'Standardni',
+    description: 'Idealan za dečije rođendane',
+    features: [
+      '2 sata fotografisanja',
+      '60+ editovanih fotografija',
+      'Online galerija',
+      'Pravo preuzimanja',
+      'Mini foto album'
+    ],
+    price: '€250'
+  },
+  {
+    id: 'premium',
+    name: 'Premium',
+    description: 'Kompletno pokrivanje događaja',
+    features: [
+      '3+ sata fotografisanja',
+      '100+ editovanih fotografija',
+      'Online galerija',
+      'Pravo preuzimanja',
+      'Premium foto album',
+      '10 printovanih fotografija'
+    ],
+    price: '€400'
+  }
+];
+---
+
+<BaseLayout
+  title="Fotograf za dečije rođendane i portrete u Beogradu"
+  description="Profesionalni fotograf za dečije rođendane i portrete u Beogradu. Dragana Korhner nudi autentične i prirodne fotografije vaših najdragocenijih trenutaka."
+>
+  <!-- Hero Section -->
+  <section class="relative h-screen flex items-center justify-center text-center bg-gradient-to-b from-primary/20 to-white mt-16">
+    <div class="container">
+      <h1 class="text-4xl md:text-6xl font-heading mb-6">
+        Čuvam vaše <span class="highlight">trenutke</span>
+      </h1>
+      <p class="text-lg md:text-xl text-text-light mb-8 max-w-2xl mx-auto">
+        Profesionalno fotografisanje dečijih rođendana i portreta u Beogradu.
+        Prirodne, autentične fotografije koje ćete ceniti zauvek.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/portfolio">Pogledajte portfolio</Button>
+        <Button href="/contact" variant="outline">Kontaktirajte me</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Preview -->
+  <section class="py-20">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-heading mb-6">
+            Zdravo, ja sam <span class="highlight">Dragana</span>
+          </h2>
+          <p class="text-text-light mb-4">
+            Specijalizovana sam za fotografisanje dečijih rođendana i porodičnih portreta.
+            Sa preko 5 godina iskustva, moj cilj je da uhvatim prirodne, spontane trenutke
+            koji pričaju vašu jedinstvenu priču.
+          </p>
+          <p class="text-text-light mb-6">
+            Verujem da najbolje fotografije nastaju kada se osećate opušteno i prirodno.
+            Zato pristupam svakom fotografisanju sa strpljenjem, kreativnošću i puno topline.
+          </p>
+          <Button href="/about">Saznajte više o meni</Button>
+        </div>
+        <div class="relative">
+          <img
+            src="/images/photos/me.jpg"
+            alt="Dragana Korhner - Fotograf"
+            class="rounded-lg shadow-xl w-full"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="py-20 bg-primary/10">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading mb-4">
+          Naše <span class="highlight">usluge</span>
+        </h2>
+        <p class="text-text-light max-w-2xl mx-auto">
+          Nudim različite pakete prilagođene vašim potrebama i budžetu
+        </p>
+      </div>
+
+      <PackageSelector packages={packages} title="" />
+
+      <div class="text-center mt-12">
+        <Button href="/contact">Rezervišite termin</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Work -->
+  <section class="py-20">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading mb-4">
+          Izdvojeni <span class="highlight">radovi</span>
+        </h2>
+        <p class="text-text-light max-w-2xl mx-auto">
+          Pogledajte neke od mojih omiljenih fotografija iz različitih kategorija
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="group relative overflow-hidden rounded-lg shadow-lg">
+          <img
+            src="/images/portfolio/portraits/portrait-1.jpg"
+            alt="Portret"
+            class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="absolute bottom-6 left-6 text-white">
+              <h3 class="text-xl font-heading mb-2">Portreti</h3>
+              <p class="text-sm">Elegantni i prirodni portreti</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="group relative overflow-hidden rounded-lg shadow-lg">
+          <img
+            src="/images/portfolio/children/child-1.jpg"
+            alt="Dečiji događaj"
+            class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="absolute bottom-6 left-6 text-white">
+              <h3 class="text-xl font-heading mb-2">Dečiji događaji</h3>
+              <p class="text-sm">Radost i sreća dečijih proslava</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="group relative overflow-hidden rounded-lg shadow-lg">
+          <img
+            src="/images/portfolio/artistic/art-1.jpg"
+            alt="Umetnička fotografija"
+            class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="absolute bottom-6 left-6 text-white">
+              <h3 class="text-xl font-heading mb-2">Umetnička fotografija</h3>
+              <p class="text-sm">Kreativni i jedinstveni portreti</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <Button href="/portfolio">Pogledajte ceo portfolio</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-secondary/10">
+    <div class="container text-center">
+      <h2 class="text-3xl md:text-4xl font-heading mb-6">
+        Spremni da <span class="highlight">sačuvamo</span> vaše trenutke?
+      </h2>
+      <p class="text-text-light text-lg mb-8 max-w-2xl mx-auto">
+        Kontaktirajte me danas i hajde da zajedno ispričamo vašu priču kroz fotografije
+      </p>
+      <Button href="/contact">Zakažite fotografisanje</Button>
+    </div>
+  </section>
+</BaseLayout>
+
+<!-- Structured Data for LocalBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Škljoc Foto",
+  "image": "https://www.skljocphoto.com/images/photos/me.jpg",
+  "@id": "https://www.skljocphoto.com",
+  "url": "https://www.skljocphoto.com",
+  "telephone": "+38599123456",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Vaša adresa",
+    "addressLocality": "Beograd",
+    "postalCode": "11000",
+    "addressCountry": "RS"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 44.8125,
+    "longitude": 20.4612
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "10:00",
+      "closes": "15:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/skljoc.foto"
+  ]
+}
+</script>
