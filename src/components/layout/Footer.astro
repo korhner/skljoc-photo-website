@@ -1,4 +1,6 @@
 ---
+import Logo from '@components/ui/Logo.astro';
+
 const currentYear = new Date().getFullYear();
 
 const footerLinks = [
@@ -14,9 +16,9 @@ const footerLinks = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
       <!-- Logo Section -->
       <div>
-        <h3 class="text-xl font-heading text-text-dark mb-2">
-          Škljoc Foto by Dragana Korhner
-        </h3>
+        <div class="mb-4">
+          <Logo />
+        </div>
         <p class="text-text-light text-sm">
           Profesionalni fotograf za dečije rođendane i portrete u Beogradu
         </p>
@@ -68,7 +70,7 @@ const footerLinks = [
     <!-- Copyright -->
     <div class="border-t border-secondary/20 pt-6">
       <p class="text-center text-text-light text-sm">
-        &copy; {currentYear} Škljoc Foto by Dragana Korhner. Sva prava zadržana.
+        &copy; {currentYear} Dragana Korhner Photography. Sva prava zadržana.
       </p>
     </div>
   </div>

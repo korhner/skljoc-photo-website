@@ -1,4 +1,6 @@
 ---
+import Logo from '@components/ui/Logo.astro';
+
 const currentPath = Astro.url.pathname;
 
 const navItems = [
@@ -20,8 +22,8 @@ const isActive = (href: string) => {
   <div class="container">
     <nav class="flex justify-between items-center py-4">
       <!-- Logo -->
-      <a href="/" class="logo text-2xl font-heading text-text-dark hover:text-accent transition-colors">
-        Škljoc Foto
+      <a href="/" class="logo transition-colors">
+        <Logo />
       </a>
 
       <!-- Mobile Menu Toggle -->

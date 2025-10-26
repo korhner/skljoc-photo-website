@@ -10,21 +10,15 @@ const { categories } = Astro.props;
 ---
 
 <div class="flex justify-center flex-wrap gap-2 mb-8">
-  <button
-    class="category-tab relative px-5 py-2 font-body text-sm tracking-wider uppercase text-text-dark transition-colors hover:text-secondary active"
-    data-category="all"
-  >
-    Sve
-    <span class="category-tab-underline w-full"></span>
-  </button>
-
-  {categories.map((category) => (
+  {categories.map((category, index) => (
     <button
-      class="category-tab relative px-5 py-2 font-body text-sm tracking-wider uppercase text-text-dark transition-colors hover:text-secondary"
+      class={`category-tab relative px-5 py-2 font-body text-sm tracking-wider uppercase text-text-dark transition-colors hover:text-secondary ${
+        index === 0 ? 'active' : ''
+      }`}
       data-category={category.id}
     >
       {category.label}
-      <span class="category-tab-underline w-0"></span>
+      <span class={`category-tab-underline ${index === 0 ? 'w-full' : 'w-0'}`}></span>
     </button>
   ))}
 </div>

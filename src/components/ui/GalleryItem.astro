@@ -2,16 +2,13 @@
 export interface Props {
   src: string;
   alt: string;
-  category: 'portraits' | 'children' | 'artistic';
+  category: 'birthdays' | 'family' | 'professional';
   width?: number;
   height?: number;
   title?: string;
 }
 
 const { src, alt, category, width = 800, height = 600, title } = Astro.props;
-
-// Calculate aspect ratio for proper placeholder sizing
-const aspectRatio = (height / width * 100).toFixed(2);
 ---
 
 <div
@@ -23,21 +20,19 @@ const aspectRatio = (height / width * 100).toFixed(2);
     data-pswp-width={width}
     data-pswp-height={height}
     class="block relative group"
+    title={title}
   >
-    <div class="relative" style={`padding-bottom: ${aspectRatio}%`}>
-      <img
-        src={src}
-        alt={alt}
-        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
-        loading="lazy"
-        decoding="async"
-      />
-    </div>
+    <img
+      src={src}
+      alt={alt}
+      class="w-full h-auto block transition-opacity duration-300"
+      loading="lazy"
+      decoding="async"
+    />
 
     <div class="gallery-overlay rounded-lg">
       <div class="text-white text-center">
-        <i class="fas fa-search-plus text-3xl mb-3"></i>
-        {title && <p class="text-base font-light px-4">{title}</p>}
+        <i class="fas fa-search-plus text-3xl"></i>
       </div>
     </div>
   </a>
