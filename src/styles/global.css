@@ -23,7 +23,7 @@
   }
 
   .btn {
-    @apply inline-block px-6 py-3 bg-secondary text-white border border-secondary
+    @apply inline-block px-10 py-3 bg-secondary text-white border border-secondary
            font-body text-sm tracking-wider uppercase cursor-pointer
            transition-all duration-300 hover:bg-transparent hover:text-secondary;
   }
