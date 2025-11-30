@@ -19,7 +19,7 @@ const { src, alt, category, width = 800, height = 600, title } = Astro.props;
     href={src}
     data-pswp-width={width}
     data-pswp-height={height}
-    class="block relative group"
+    class="block relative group pswp-item"
     title={title}
   >
     <img
@@ -28,6 +28,7 @@ const { src, alt, category, width = 800, height = 600, title } = Astro.props;
       class="w-full h-auto block transition-opacity duration-300"
       loading="lazy"
       decoding="async"
+      onload="if(!this.dataset.sized) { this.parentNode.dataset.pswpWidth = this.naturalWidth; this.parentNode.dataset.pswpHeight = this.naturalHeight; this.dataset.sized = true; }"
     />
 
     <div class="gallery-overlay rounded-lg">
