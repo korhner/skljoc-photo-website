@@ -1,4 +1,4 @@
-# robots.txt for Škljoc Foto
+# robots.txt for Dragana Korhner Photography
 
 User-agent: *
 Allow: /
@@ -15,4 +15,4 @@ Allow: /js/
 Allow: /images/
 
 # Sitemap location
-Sitemap: https://www.skljocphoto.com/sitemap.xml
+Sitemap: https://www.draganakorhner.photography/sitemap.xml

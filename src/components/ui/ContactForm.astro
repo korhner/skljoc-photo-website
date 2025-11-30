@@ -7,7 +7,7 @@
   <!-- Honeypot field to prevent spam -->
   <input type="text" name="_honey" style="display:none">
   <!-- Hidden subject field that will be updated via JavaScript -->
-  <input type="hidden" name="_subject" id="form-subject" value="Upit sa sajta Škljoc Foto">
+  <input type="hidden" name="_subject" id="form-subject" value="Upit sa sajta Dragana Korhner Photography">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <div>
       <label for="name" class="block text-sm font-medium text-text-dark mb-2">
@@ -106,9 +106,9 @@
       serviceSelect.addEventListener('change', function() {
         const selectedService = serviceSelect.value;
         if (selectedService) {
-          formSubject.value = `Upit za uslugu: ${selectedService} - Škljoc Foto`;
+          formSubject.value = `Upit za uslugu: ${selectedService} - Dragana Korhner Photography`;
         } else {
-          formSubject.value = 'Upit sa sajta Škljoc Foto';
+          formSubject.value = 'Upit sa sajta Dragana Korhner Photography';
         }
       });
     }

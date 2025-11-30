@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind';
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
-  site: 'https://www.skljocphoto.com',
+  site: 'https://www.draganakorhner.photography',
   compressHTML: true,
   build: {
     inlineStylesheets: 'auto'
