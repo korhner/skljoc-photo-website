@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "portfolio": "node scripts/process-portfolio.js",
-    "portfolio:watch": "node scripts/process-portfolio.js --watch"
+    "portfolio:watch": "node scripts/process-portfolio.js --watch",
+    "optimize-images": "node scripts/optimize-images.js"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.2",

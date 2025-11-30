@@ -9,6 +9,9 @@ export interface Props {
 }
 
 const { src, alt, category, width = 800, height = 600, title } = Astro.props;
+
+// The src is already the optimized image path
+// We don't need the OptimizedImage component anymore since we're pre-processing the images
 ---
 
 <div
@@ -25,6 +28,8 @@ const { src, alt, category, width = 800, height = 600, title } = Astro.props;
     <img
       src={src}
       alt={alt}
+      width={width}
+      height={height}
       class="w-full h-auto block transition-opacity duration-300"
       loading="lazy"
       decoding="async"

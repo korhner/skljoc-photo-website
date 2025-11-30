@@ -1,0 +1,71 @@
+---
+// In Astro v4, we need to use the getImage function to optimize images from the public directory
+// The Image component requires explicit imports for images, which doesn't work well with dynamic paths
+import { getImage } from 'astro:assets';
+
+export interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  title?: string;
+  loading?: "eager" | "lazy";
+  decoding?: "sync" | "async" | "auto";
+  onload?: string;
+}
+
+const {
+  src,
+  alt,
+  width = 800,
+  height = 600,
+  class: className = "",
+  title,
+  loading = "lazy",
+  decoding = "async",
+  onload
+} = Astro.props;
+
+// Check if image is remote or local
+const isRemoteImage = src.startsWith('http') || src.startsWith('//');
+
+// For image optimization, we'll use a different approach
+// We're handling both remote and local images with standard img tags
+// but optimizing local images when possible using Astro's image service
+
+// For local images in public directory, we can't use the Image component directly
+// But we can optimize them using getImage which processes them through Sharp
+let optimizedSrc = src;
+
+if (!isRemoteImage) {
+  try {
+    // Process the image through Sharp to optimize it
+    // This will create a WebP version with quality settings from our config
+    const imageSrc = new URL('../../..' + src, import.meta.url);
+    const optimizedImage = await getImage({
+      src: imageSrc,
+      format: 'webp',
+      width: width,
+      height: height,
+      quality: 80,
+    });
+    optimizedSrc = optimizedImage.src;
+  } catch (e) {
+    // If optimization fails, fall back to the original image
+    console.error(`Failed to optimize image: ${src}`, e);
+  }
+}
+---
+
+<img
+  src={optimizedSrc}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  title={title}
+  loading={loading}
+  decoding={decoding}
+  onload={onload}
+/>

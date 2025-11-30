@@ -3,8 +3,20 @@ import BaseLayout from '@components/layout/BaseLayout.astro';
 import CategoryTabs from '@components/ui/CategoryTabs.astro';
 import GalleryItem from '@components/ui/GalleryItem.astro';
 
-// Import gallery data from fallback file
-import { fallbackGalleryItems as galleryItems, categories } from '../data/portfolio-images-fallback.ts';
+// Try to import the optimized gallery items if they exist,
+// otherwise fall back to the fallback gallery items
+let galleryItems, categories;
+
+try {
+  const optimizedData = await import('../data/optimized-images.js');
+  galleryItems = optimizedData.optimizedGalleryItems;
+  categories = optimizedData.categories;
+} catch (e) {
+  // Fall back to unoptimized images if optimized ones don't exist
+  const fallbackData = await import('../data/portfolio-images-fallback.ts');
+  galleryItems = fallbackData.fallbackGalleryItems;
+  categories = fallbackData.categories;
+}
 ---
 
 <BaseLayout
