@@ -400,10 +400,146 @@ export const fallbackGalleryItems = [
     height: 1000
   },
   {
-    src: '/images/photos/children/407A8964.jpg',
+    src: '/images/photos/children/407A0115.jpg',
+    alt: 'Dečiji rođendan',
+    category: 'children',
+    title: 'Srećan rođendan',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/children/407A0446.jpg',
+    alt: 'Dečija proslava',
+    category: 'children',
+    title: 'Vesela proslava',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/children/407A0460.jpg',
     alt: 'Dečiji osmeh',
     category: 'children',
-    title: 'Radosni osmeh',
+    title: 'Čarobni trenuci',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/children/407A0702.jpg',
+    alt: 'Dečiji rođendan',
+    category: 'children',
+    title: 'Zabava s prijateljima',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/children/407A0808.jpg',
+    alt: 'Dečija igra',
+    category: 'children',
+    title: 'Kreativni trenuci',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/children/407A0887.jpg',
+    alt: 'Dečija zabava',
+    category: 'children',
+    title: 'Radost rođendana',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/children/407A1354.jpg',
+    alt: 'Dečiji rođendan',
+    category: 'children',
+    title: 'Rođendansko slavlje',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/children/407A1481.jpg',
+    alt: 'Dečija igra',
+    category: 'children',
+    title: 'Igra i sreća',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/children/407A1484.jpg',
+    alt: 'Dečiji osmeh',
+    category: 'children',
+    title: 'Dečija zabava',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/children/407A9323.jpg',
+    alt: 'Dečija proslava',
+    category: 'children',
+    title: 'Posebni trenuci',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/children/407A9346.jpg',
+    alt: 'Dečiji rođendan',
+    category: 'children',
+    title: 'Srećni osmesi',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/children/407A9352.jpg',
+    alt: 'Dečija zabava',
+    category: 'children',
+    title: 'Veselo druženje',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/children/407A9455.jpg',
+    alt: 'Dečiji rođendan',
+    category: 'children',
+    title: 'Nezaboravni trenuci',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/children/407A9587.jpg',
+    alt: 'Dečija proslava',
+    category: 'children',
+    title: 'Šarena zabava',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/children/407A9595.jpg',
+    alt: 'Dečiji osmeh',
+    category: 'children',
+    title: 'Radosni trenutak',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/children/407A9751.jpg',
+    alt: 'Dečiji rođendan',
+    category: 'children',
+    title: 'Rođendanski trenuci',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/children/407A9752.jpg',
+    alt: 'Dečija zabava',
+    category: 'children',
+    title: 'Zabavne igre',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/children/407A9915-2.jpg',
+    alt: 'Dečiji rođendan',
+    category: 'children',
+    title: 'Rođendanski ugođaj',
     width: 1500,
     height: 1000
   },
@@ -518,6 +654,62 @@ export const fallbackGalleryItems = [
     alt: 'Društvena proslava',
     category: 'social',
     title: 'Veselo druženje',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/family/407A0016.jpg',
+    alt: 'Društveni događaj',
+    category: 'social',
+    title: 'Zajednički trenuci',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/family/407A0163_3.jpg',
+    alt: 'Društvena fotografija',
+    category: 'social',
+    title: 'Grupna fotografija',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/family/407A0189_2.jpg',
+    alt: 'Društveni događaj',
+    category: 'social',
+    title: 'Poseban trenutak',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/family/407A0193_1.jpg',
+    alt: 'Društvena fotografija',
+    category: 'social',
+    title: 'Važan događaj',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/family/407A9941.jpg',
+    alt: 'Društveni događaj',
+    category: 'social',
+    title: 'Društveni susret',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/family/407A9954.jpg',
+    alt: 'Društvena fotografija',
+    category: 'social',
+    title: 'Nezaboravni trenuci',
+    width: 1500,
+    height: 1000
+  },
+  {
+    src: '/images/photos/family/407A9982.jpg',
+    alt: 'Društveni događaj',
+    category: 'social',
+    title: 'Svečani događaj',
     width: 1500,
     height: 1000
   }
