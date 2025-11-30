@@ -1,0 +1,268 @@
+---
+export interface ServicePackage {
+  name: string;
+  price: string;
+  features: string[];
+}
+
+export interface Service {
+  icon: string;
+  title: string;
+  description: string;
+  packages: {
+    standard: ServicePackage;
+    premium: ServicePackage;
+  };
+}
+
+const services: Service[] = [
+  {
+    icon: "🎂",
+    title: "Svetlucavi trenuci",
+    description: "Smeh, baloni, mrvice torte na nosu - zabeležavam svaki dragoceni trenutak dok vi uživate u slavlju.",
+    packages: {
+      standard: {
+        name: "Standard",
+        price: "70€",
+        features: [
+          "Trajanje: 1.5h",
+          "80 fotografija",
+          "Osnovna obrada fotografija"
+        ]
+      },
+      premium: {
+        name: "Premium",
+        price: "100€",
+        features: [
+          "Trajanje: 2.5h",
+          "100 fotografija",
+          "Osnovna obrada fotografija"
+        ]
+      }
+    }
+  },
+  {
+    icon: "👨‍👩‍👧‍👦",
+    title: "Naša priča",
+    description: "Bilo da želite piknik u prirodi, šetnju kroz grad ili nežne trenutke kod kuće - fotografisanje će biti prilagođeno Vama i Vašoj priči.",
+    packages: {
+      standard: {
+        name: "Standard",
+        price: "60€",
+        features: [
+          "Trajanje: 1h",
+          "20 fotografija",
+          "Osnovna obrada fotografija",
+          "Odabir lokacije po želji"
+        ]
+      },
+      premium: {
+        name: "Premium",
+        price: "100€",
+        features: [
+          "Trajanje: 2h",
+          "40 fotografija",
+          "Osnovna obrada fotografija",
+          "Odabir lokacije po želji",
+          "Dodatne poze i scene"
+        ]
+      }
+    }
+  },
+  {
+    icon: "👔",
+    title: "Profesionalni sjaj",
+    description: "Verujem da svako nosi nešto jedinstveno - pogled, osmeh, energiju. Bilo da ti trebaju poslovni portreti za Linkedin ili jednostavno želiš da se istakneš na društvenim mrežama.",
+    packages: {
+      standard: {
+        name: "CV/LinkedIn",
+        price: "40€",
+        features: [
+          "Trajanje: 30 min.",
+          "5 profesionalnih fotografija",
+          "Za profesionalnu prezentaciju",
+          "Osnovno retuširanje"
+        ]
+      },
+      premium: {
+        name: "Mreže",
+        price: "70€",
+        features: [
+          "Trajanje: 1h",
+          "15 obrađenih fotografija",
+          "Za mreže i promociju",
+          "Profesionalno retuširanje",
+          "Različiti uglovi i poze"
+        ]
+      }
+    }
+  }
+];
+---
+
+<div class="services-grid">
+  {services.map((service, serviceIndex) => (
+    <div class="service-card">
+      <div class="service-header">
+        <h3 class="text-2xl font-heading flex items-center gap-3">
+          <span class="text-3xl">{service.icon}</span>
+          <span>{service.title}</span>
+        </h3>
+        <p class="service-description text-text-light mt-3">{service.description}</p>
+      </div>
+
+      <hr class="service-divider my-4 border-secondary/20">
+
+      <div class="package-options">
+        <div class="package-selector flex rounded-lg overflow-hidden border border-secondary/30">
+          <button
+            class="package-tab flex-1 py-3 px-4 text-center font-medium transition-all bg-secondary text-white"
+            data-package="standard"
+            data-service={`service-${serviceIndex}`}
+          >
+            {service.packages.standard.name}
+          </button>
+          <button
+            class="package-tab flex-1 py-3 px-4 text-center font-medium transition-all text-text-light hover:bg-secondary/10"
+            data-package="premium"
+            data-service={`service-${serviceIndex}`}
+          >
+            {service.packages.premium.name}
+          </button>
+        </div>
+
+        <div class="package-details standard active mt-4 p-5 bg-primary/5 rounded-lg" data-service={`service-${serviceIndex}`}>
+          <div class="service-price text-center mb-4">
+            <span class="price text-4xl font-heading text-secondary">{service.packages.standard.price}</span>
+          </div>
+          <div class="service-features">
+            <ul class="space-y-3">
+              {service.packages.standard.features.map(feature => (
+                <li class="flex items-center gap-3">
+                  <i class="fas fa-check text-secondary bg-secondary/10 w-6 h-6 rounded-full flex items-center justify-center text-xs"></i>
+                  <span class="text-text-dark">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div class="package-details premium hidden mt-4 p-5 bg-primary/5 rounded-lg" data-service={`service-${serviceIndex}`}>
+          <div class="service-price text-center mb-4">
+            <span class="price text-4xl font-heading text-secondary">{service.packages.premium.price}</span>
+          </div>
+          <div class="service-features">
+            <ul class="space-y-3">
+              {service.packages.premium.features.map(feature => (
+                <li class="flex items-center gap-3">
+                  <i class="fas fa-check text-secondary bg-secondary/10 w-6 h-6 rounded-full flex items-center justify-center text-xs"></i>
+                  <span class="text-text-dark">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <a href="/contact" class="btn-service mt-6 block text-center bg-secondary text-white py-3 px-6 rounded-lg hover:bg-accent transition-colors">
+        Zakaži termin
+      </a>
+    </div>
+  ))}
+</div>
+
+<style>
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    background-color: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+    min-height: 600px;
+  }
+
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  }
+
+  .service-header {
+    margin-bottom: 1.5rem;
+    min-height: 150px;
+  }
+
+  .package-options {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .package-details {
+    flex-grow: 1;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .package-details.active {
+    display: block !important;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const packageTabs = document.querySelectorAll('.package-tab');
+
+    packageTabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        const packageType = this.getAttribute('data-package');
+        const serviceId = this.getAttribute('data-service');
+
+        // Find parent card
+        const serviceCard = this.closest('.service-card');
+        if (!serviceCard) return;
+
+        // Update tabs for this service
+        serviceCard.querySelectorAll('.package-tab').forEach(t => {
+          t.classList.remove('bg-secondary', 'text-white');
+          t.classList.add('text-text-light');
+        });
+
+        this.classList.remove('text-text-light');
+        this.classList.add('bg-secondary', 'text-white');
+
+        // Update package details for this service
+        serviceCard.querySelectorAll('.package-details').forEach(details => {
+          details.classList.add('hidden');
+          details.classList.remove('active');
+        });
+
+        const targetDetails = serviceCard.querySelector(`.package-details.${packageType}`);
+        if (targetDetails) {
+          targetDetails.classList.remove('hidden');
+          targetDetails.classList.add('active');
+        }
+      });
+    });
+  });
+</script>

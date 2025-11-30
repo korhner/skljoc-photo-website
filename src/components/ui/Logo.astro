@@ -1,0 +1,60 @@
+---
+export interface Props {
+  className?: string;
+}
+
+const { className = "" } = Astro.props;
+---
+
+<div class={`logo-wrapper ${className}`}>
+  <span class="logo-name">Dragana Korhner</span>
+  <span class="logo-subtitle">Photography</span>
+</div>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+
+  .logo-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+  }
+
+  .logo-name {
+    font-family: 'Allura', cursive;
+    font-weight: 400;
+    font-size: 2.6rem;
+    color: var(--text-color);
+    letter-spacing: 0.01em;
+    margin-bottom: 0.25rem;
+  }
+
+  .logo-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--text-color);
+    opacity: 0.8;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .logo-name {
+      font-size: 2.2rem;
+    }
+
+    .logo-subtitle {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+    }
+  }
+
+  /* Hover effect for when used as a link */
+  .logo-wrapper:hover .logo-name {
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+  }
+</style>
