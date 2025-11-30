@@ -1,7 +1,13 @@
 ---
 ---
 
-<form id="contactForm" class="space-y-6">
+<form id="contactForm" class="space-y-6" action="https://formspree.io/f/mgvgvgjp" method="POST">
+  <!-- Hidden field for thank you page redirect -->
+  <input type="hidden" name="_next" value="/thank-you">
+  <!-- Honeypot field to prevent spam -->
+  <input type="text" name="_honey" style="display:none">
+  <!-- Hidden subject field that will be updated via JavaScript -->
+  <input type="hidden" name="_subject" id="form-subject" value="Upit sa sajta Škljoc Foto">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <div>
       <label for="name" class="block text-sm font-medium text-text-dark mb-2">
@@ -76,6 +82,11 @@
     ></textarea>
   </div>
 
+  <div id="form-status" class="hidden">
+    <p id="success-message" class="text-green-600 font-medium hidden">Hvala na vašoj poruci! Odgovoriću vam uskoro.</p>
+    <p id="error-message" class="text-red-600 font-medium hidden">Došlo je do greške. Molimo pokušajte ponovo ili me kontaktirajte direktno.</p>
+  </div>
+
   <button type="submit" class="btn">
     Pošalji poruku
   </button>
@@ -84,6 +95,23 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm') as HTMLFormElement;
+    const formStatus = document.getElementById('form-status');
+    const successMessage = document.getElementById('success-message');
+    const errorMessage = document.getElementById('error-message');
+    const serviceSelect = document.getElementById('service') as HTMLSelectElement;
+    const formSubject = document.getElementById('form-subject') as HTMLInputElement;
+
+    // Update subject when service changes
+    if (serviceSelect && formSubject) {
+      serviceSelect.addEventListener('change', function() {
+        const selectedService = serviceSelect.value;
+        if (selectedService) {
+          formSubject.value = `Upit za uslugu: ${selectedService} - Škljoc Foto`;
+        } else {
+          formSubject.value = 'Upit sa sajta Škljoc Foto';
+        }
+      });
+    }
 
     if (contactForm) {
       contactForm.addEventListener('submit', function(e) {
@@ -108,10 +136,55 @@
           return;
         }
 
-        // In a real implementation, you would send the data to a server here
-        // For now, we'll just show a success message
-        alert('Hvala na vašoj poruci! Odgovoriću vam uskoro.');
-        contactForm.reset();
+        // Add loading state to button
+        const submitButton = contactForm.querySelector('button[type="submit"]') as HTMLButtonElement;
+        const originalButtonText = submitButton.innerText;
+        submitButton.innerText = 'Slanje...';
+        submitButton.disabled = true;
+
+        // Submit the form to Formspree
+        fetch(contactForm.action, {
+          method: contactForm.method,
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            // Show success message
+            formStatus.classList.remove('hidden');
+            successMessage.classList.remove('hidden');
+            errorMessage.classList.add('hidden');
+            contactForm.reset();
+
+            // Redirect to thank you page after a short delay
+            setTimeout(() => {
+              window.location.href = formData.get('_next') as string;
+            }, 1000);
+          } else {
+            // Show error message
+            formStatus.classList.remove('hidden');
+            errorMessage.classList.remove('hidden');
+            successMessage.classList.add('hidden');
+
+            // Reset button
+            submitButton.innerText = originalButtonText;
+            submitButton.disabled = false;
+
+            throw new Error('Form submission failed');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          formStatus.classList.remove('hidden');
+          errorMessage.classList.remove('hidden');
+          successMessage.classList.add('hidden');
+
+          // Reset button
+          submitButton.innerText = originalButtonText;
+          submitButton.disabled = false;
+        });
       });
     }
   });

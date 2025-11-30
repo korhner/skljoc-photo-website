@@ -103,6 +103,14 @@ npm run preview
 
 ## 🔧 Development
 
+### Contact Form
+The site uses Formspree to handle contact form submissions. To configure this:
+
+1. Set up a Formspree account and create a form
+2. Get your form ID
+3. Replace `your-form-id` in `src/components/ui/ContactForm.astro` with your actual ID
+4. See `FORMSPREE-SETUP.md` for detailed setup instructions
+
 ### Adding New Pages
 Create a new `.astro` file in `src/pages/`:
 ```astro
