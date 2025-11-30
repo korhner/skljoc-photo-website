@@ -1,12 +1,12 @@
 export const categories = [
   { id: 'all', label: 'Sve' },
-  { id: 'children', label: 'Deca' },
+  { id: 'children', label: 'Rođendani' },
   { id: 'family', label: 'Porodične slike' },
-  { id: 'social', label: 'Društveni događaji' }
+  { id: 'social', label: 'Društvene mreže' }
 ];
 
 export const fallbackGalleryItems = [
-  // Children photos
+  // Rođendani
   {
     src: '/images/photos/children/407A1856.jpg',
     alt: 'Dečija fotografija',
@@ -432,7 +432,7 @@ export const fallbackGalleryItems = [
     width: 1500,
     height: 1000
   },
-  // Social events
+  // Društvene mreže
   {
     src: '/images/photos/social/407A2201.jpg',
     alt: 'Društveni događaj',
