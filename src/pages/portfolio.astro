@@ -2,26 +2,9 @@
 import BaseLayout from '@components/layout/BaseLayout.astro';
 import CategoryTabs from '@components/ui/CategoryTabs.astro';
 import GalleryItem from '@components/ui/GalleryItem.astro';
-import fs from 'fs';
-import path from 'path';
 
-// Try to load generated portfolio data, fallback to hardcoded if not available
-let galleryItems;
-let categories;
-
-const generatedDataPath = path.join(process.cwd(), 'src/data/portfolio-images.ts');
-
-if (fs.existsSync(generatedDataPath)) {
-  // Use generated data
-  const portfolioData = await import('../data/portfolio-images.ts');
-  galleryItems = portfolioData.galleryItems;
-  categories = portfolioData.categories;
-} else {
-  // Use fallback data (current hardcoded images)
-  const fallbackData = await import('../data/portfolio-images-fallback.ts');
-  galleryItems = fallbackData.fallbackGalleryItems;
-  categories = fallbackData.categories;
-}
+// Import gallery data from fallback file
+import { fallbackGalleryItems as galleryItems, categories } from '../data/portfolio-images-fallback.ts';
 ---
 
 <BaseLayout
