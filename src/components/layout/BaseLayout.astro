@@ -54,6 +54,26 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   <!-- Sitemap -->
   <link rel="sitemap" href="/sitemap-index.xml">
+
+  <!-- Amplitude Analytics -->
+  <script src="https://cdn.amplitude.com/script/b61d46f5894d41eaed2f6bb7f472fc78.js"></script>
+  <script>
+    window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
+    window.amplitude.init('b61d46f5894d41eaed2f6bb7f472fc78', {
+      "fetchRemoteConfig":true,
+      "autocapture":{
+        "attribution":true,
+        "fileDownloads":true,
+        "formInteractions":true,
+        "pageViews":true,
+        "sessions":true,
+        "elementInteractions":true,
+        "networkTracking":true,
+        "webVitals":true,
+        "frustrationInteractions":true
+      }
+    });
+  </script>
 </head>
 <body class="text-text-dark bg-white">
   <Header />
