@@ -42,7 +42,7 @@ if (!isRemoteImage) {
   try {
     // Process the image through Sharp to optimize it
     // This will create a WebP version with quality settings from our config
-    const imageSrc = new URL('../../..' + src, import.meta.url);
+    const imageSrc = new URL('../../..' + src, import.meta.url).href;
     const optimizedImage = await getImage({
       src: imageSrc,
       format: 'webp',

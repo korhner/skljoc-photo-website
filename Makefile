@@ -92,10 +92,35 @@ type-check:
 	npx astro check
 	@echo "$(GREEN)✓ Type checking complete$(NC)"
 
-## test: Run tests (placeholder for future test suite)
-test:
-	@echo "$(YELLOW)No tests configured yet$(NC)"
-	@echo "Consider adding: Vitest, Playwright, or Cypress for testing"
+## ci: Run all pre-commit checks (build + type-check)
+ci:
+	@echo "$(BLUE)Running pre-commit checks...$(NC)"
+	npm run build
+	npx astro check
+	@echo "$(GREEN)✓ Pre-commit checks passed$(NC)"
+
+## ci-full: Run all checks including E2E tests (same as pre-push)
+ci-full: build
+	@echo "$(BLUE)Running full CI checks...$(NC)"
+	npx astro check
+	npx playwright test
+	@echo "$(GREEN)✓ All checks passed$(NC)"
+
+## test: Run Playwright E2E tests
+test: build
+	@echo "$(BLUE)Running Playwright E2E tests...$(NC)"
+	npx playwright test
+	@echo "$(GREEN)✓ All tests passed$(NC)"
+
+## test-headed: Run E2E tests in headed browser
+test-headed: build
+	@echo "$(BLUE)Running Playwright tests (headed)...$(NC)"
+	npx playwright test --headed
+
+## test-ui: Open Playwright test UI
+test-ui:
+	@echo "$(BLUE)Opening Playwright UI...$(NC)"
+	npx playwright test --ui
 
 ## setup: Initial project setup
 setup: install

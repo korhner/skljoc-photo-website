@@ -1,0 +1,99 @@
+---
+import BaseLayout from '@components/layout/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+
+const formattedDate = post.data.pubDate.toLocaleDateString('sr-Latn-RS', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  keywords={post.data.keywords}
+  ogImage={post.data.heroImage}
+>
+  <article class="py-24 mt-16">
+    <div class="container max-w-3xl">
+      <header class="mb-10">
+        <div class="mb-4">
+          <a href="/blog" class="text-secondary hover:text-accent text-sm transition-colors">
+            &larr; Nazad na blog
+          </a>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-heading mb-4">{post.data.title}</h1>
+        <div class="flex items-center gap-4 text-sm text-text-light">
+          <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
+          <span>&middot;</span>
+          <span>{post.data.author}</span>
+        </div>
+      </header>
+
+      {post.data.heroImage && (
+        <img
+          src={post.data.heroImage}
+          alt={post.data.title}
+          class="w-full rounded-lg shadow-lg mb-10"
+        />
+      )}
+
+      <div class="prose prose-lg max-w-none
+        prose-headings:font-heading prose-headings:text-text-dark
+        prose-p:text-text-light prose-p:leading-relaxed
+        prose-a:text-secondary prose-a:no-underline hover:prose-a:underline
+        prose-img:rounded-lg prose-img:shadow-md
+        prose-li:text-text-light
+        prose-strong:text-text-dark">
+        <Content />
+      </div>
+
+      <div class="mt-16 pt-8 border-t border-secondary/20">
+        <div class="bg-primary/20 rounded-lg p-8 text-center">
+          <h3 class="text-2xl font-heading mb-3">Želite da zakažete fotografisanje?</h3>
+          <p class="text-text-light mb-6">Kontaktirajte me i hajde da zajedno sačuvamo vaše posebne trenutke.</p>
+          <a href="/contact" class="btn inline-block">Zakažite termin</a>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "image": post.data.heroImage ? `https://www.draganakorhner.photography${post.data.heroImage}` : undefined,
+  "datePublished": post.data.pubDate.toISOString(),
+  "dateModified": (post.data.updatedDate || post.data.pubDate).toISOString(),
+  "author": {
+    "@type": "Person",
+    "name": post.data.author,
+    "url": "https://www.draganakorhner.photography"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Dragana Korhner Photography",
+    "url": "https://www.draganakorhner.photography"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://www.draganakorhner.photography/blog/${post.slug}`
+  }
+})} />

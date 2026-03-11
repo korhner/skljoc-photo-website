@@ -1,0 +1,61 @@
+---
+import BaseLayout from '@components/layout/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout
+  title="Blog | Saveti za fotografisanje"
+  description="Saveti za fotografisanje, pripremu za foto sesije, i inspiracija za dečije rođendane i porodične fotografije u Beogradu."
+  keywords="blog fotograf Beograd, saveti za fotografisanje, priprema za foto sesiju, dečiji rođendani saveti"
+>
+  <section class="py-24 mt-16 bg-white border-b border-secondary/20">
+    <div class="container text-center">
+      <h1 class="text-4xl md:text-5xl font-heading mb-4">Blog</h1>
+      <p class="text-lg text-text-light">
+        Saveti, inspiracija i priče <span class="highlight">iza objektiva</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container">
+      {posts.length === 0 ? (
+        <p class="text-center text-text-light text-lg">Uskoro stižu novi članci. Pratite nas!</p>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map((post) => (
+            <a href={`/blog/${post.slug}`} class="group block">
+              <article class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                {post.data.heroImage && (
+                  <div class="overflow-hidden">
+                    <img
+                      src={post.data.heroImage}
+                      alt={post.data.title}
+                      class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                )}
+                <div class="p-6">
+                  <time class="text-sm text-text-light" datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString('sr-Latn-RS', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </time>
+                  <h2 class="text-xl font-heading mt-2 mb-3 group-hover:text-secondary transition-colors">
+                    {post.data.title}
+                  </h2>
+                  <p class="text-text-light text-sm line-clamp-3">{post.data.description}</p>
+                </div>
+              </article>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

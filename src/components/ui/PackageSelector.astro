@@ -66,14 +66,13 @@ const { packages, title = "Naši paketi" } = Astro.props;
     const packageTabs = document.querySelectorAll('.package-tab');
 
     packageTabs.forEach(tab => {
-      tab.addEventListener('click', function() {
+      tab.addEventListener('click', function(this: HTMLElement) {
         const packageId = this.getAttribute('data-package');
         const selector = this.closest('.package-selector');
 
         if (!selector) return;
 
-        // Update tabs
-        selector.querySelectorAll('.package-tab').forEach(t => {
+        selector.querySelectorAll('.package-tab').forEach((t: Element) => {
           t.classList.remove('bg-secondary', 'text-white');
           t.classList.add('bg-transparent', 'text-secondary');
         });
@@ -81,8 +80,7 @@ const { packages, title = "Naši paketi" } = Astro.props;
         this.classList.remove('bg-transparent', 'text-secondary');
         this.classList.add('bg-secondary', 'text-white');
 
-        // Update content
-        selector.querySelectorAll('.package-details').forEach(details => {
+        selector.querySelectorAll('.package-details').forEach((details: Element) => {
           details.classList.add('hidden');
         });
 

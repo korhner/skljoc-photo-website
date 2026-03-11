@@ -10,19 +10,27 @@
     "astro": "astro",
     "portfolio": "node scripts/process-portfolio.js",
     "portfolio:watch": "node scripts/process-portfolio.js --watch",
-    "optimize-images": "node scripts/optimize-images.js"
+    "optimize-images": "node scripts/optimize-images.js",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "prepare": "husky"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.7",
     "@astrojs/tailwind": "^5.1.2",
+    "@tailwindcss/typography": "^0.5.15",
     "astro": "^4.16.16",
     "photoswipe": "^5.4.4",
     "tailwindcss": "^3.4.15"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@types/node": "^20.11.5",
     "chokidar": "^4.0.3",
     "fs-extra": "^11.3.2",
     "glob": "^11.0.3",
+    "husky": "^9.1.7",
     "sharp": "^0.34.4",
     "typescript": "^5.3.3"
   }

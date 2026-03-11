@@ -1,0 +1,2 @@
+echo "Running pre-push checks (E2E tests)..."
+npm run build && npx playwright test

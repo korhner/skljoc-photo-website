@@ -234,16 +234,13 @@ const services: Service[] = [
     const packageTabs = document.querySelectorAll('.package-tab');
 
     packageTabs.forEach(tab => {
-      tab.addEventListener('click', function() {
+      tab.addEventListener('click', function(this: HTMLElement) {
         const packageType = this.getAttribute('data-package');
-        const serviceId = this.getAttribute('data-service');
 
-        // Find parent card
         const serviceCard = this.closest('.service-card');
         if (!serviceCard) return;
 
-        // Update tabs for this service
-        serviceCard.querySelectorAll('.package-tab').forEach(t => {
+        serviceCard.querySelectorAll('.package-tab').forEach((t: Element) => {
           t.classList.remove('bg-secondary', 'text-white');
           t.classList.add('text-text-light');
         });
@@ -251,8 +248,7 @@ const services: Service[] = [
         this.classList.remove('text-text-light');
         this.classList.add('bg-secondary', 'text-white');
 
-        // Update package details for this service
-        serviceCard.querySelectorAll('.package-details').forEach(details => {
+        serviceCard.querySelectorAll('.package-details').forEach((details: Element) => {
           details.classList.add('hidden');
           details.classList.remove('active');
         });
