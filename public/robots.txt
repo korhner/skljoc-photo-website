@@ -3,16 +3,4 @@
 User-agent: *
 Allow: /
 
-# Important pages
-Allow: /index.html
-Allow: /portfolio.html
-Allow: /about.html
-Allow: /contact.html
-
-# CSS, JS, and images
-Allow: /css/
-Allow: /js/
-Allow: /images/
-
-# Sitemap location
 Sitemap: https://www.draganakorhner.photography/sitemap.xml
