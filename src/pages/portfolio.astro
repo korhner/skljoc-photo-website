@@ -3,16 +3,28 @@ import BaseLayout from '@components/layout/BaseLayout.astro';
 import CategoryTabs from '@components/ui/CategoryTabs.astro';
 import GalleryItem from '@components/ui/GalleryItem.astro';
 
-// Try to import the optimized gallery items if they exist,
-// otherwise fall back to the fallback gallery items
-let galleryItems, categories;
+interface GalleryItemData {
+  src: string;
+  alt: string;
+  category: string;
+  title: string;
+  width: number;
+  height: number;
+}
+
+interface CategoryData {
+  id: string;
+  label: string;
+}
+
+let galleryItems: GalleryItemData[];
+let categories: CategoryData[];
 
 try {
   const optimizedData = await import('../data/optimized-images.js');
   galleryItems = optimizedData.optimizedGalleryItems;
   categories = optimizedData.categories;
-} catch (e) {
-  // Fall back to unoptimized images if optimized ones don't exist
+} catch {
   const fallbackData = await import('../data/portfolio-images-fallback.ts');
   galleryItems = fallbackData.fallbackGalleryItems;
   categories = fallbackData.categories;

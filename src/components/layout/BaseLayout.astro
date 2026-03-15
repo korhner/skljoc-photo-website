@@ -17,7 +17,7 @@ const {
   ogImage = "https://www.draganakorhner.photography/images/optimized/me.webp"
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!DOCTYPE html>
