@@ -75,8 +75,7 @@ try {
   import PhotoSwipeLightbox from 'photoswipe/lightbox';
   import 'photoswipe/style.css';
 
-  // Initialize PhotoSwipe
-  document.addEventListener('DOMContentLoaded', function() {
+  function initGallery() {
     const lightbox = new PhotoSwipeLightbox({
       gallery: '#gallery',
       children: 'a',
@@ -85,11 +84,9 @@ try {
 
     lightbox.init();
 
-    // Category filtering
     const categoryTabs = document.querySelectorAll('.category-tab');
     const galleryItems = document.querySelectorAll('.gallery-item');
 
-    // Initialize: Hide items that don't match the initially active category
     const activeTab = document.querySelector('.category-tab.active');
     const initialCategory = activeTab ? activeTab.getAttribute('data-category') : 'all';
 
@@ -102,7 +99,6 @@ try {
       }
     });
 
-    // Remove initial animations after they've played once
     setTimeout(() => {
       galleryItems.forEach(item => {
         (item as HTMLElement).style.animation = 'none';
@@ -111,7 +107,6 @@ try {
 
     categoryTabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        // Update active state
         categoryTabs.forEach(t => {
           t.classList.remove('active');
           const underline = t.querySelector('.category-tab-underline');
@@ -128,25 +123,27 @@ try {
           underline.classList.add('w-full');
         }
 
-        // Get category
         const category = tab.getAttribute('data-category');
 
-        // Instant filtering with no transitions
         galleryItems.forEach((item) => {
           const itemCategory = item.getAttribute('data-category');
           const shouldShow = category === 'all' || itemCategory === category;
 
           if (shouldShow) {
-            // Show item instantly
             item.classList.remove('hidden');
           } else {
-            // Hide item instantly
             item.classList.add('hidden');
           }
         });
       });
     });
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGallery);
+  } else {
+    initGallery();
+  }
 </script>
 
 <!-- Structured Data -->

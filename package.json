@@ -22,6 +22,7 @@
     "@tailwindcss/typography": "^0.5.15",
     "astro": "^4.16.16",
     "photoswipe": "^5.4.4",
+    "puppeteer": "^24.39.1",
     "tailwindcss": "^3.4.15"
   },
   "devDependencies": {

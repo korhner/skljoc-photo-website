@@ -92,6 +92,16 @@ const isServicesActive = currentPath.startsWith('/usluge');
         </li>
         <li>
           <a
+            href="/blog"
+            class={`text-sm font-body tracking-wider uppercase transition-colors hover:text-secondary ${
+              isActive('/blog') ? 'text-secondary font-medium' : 'text-text-dark'
+            }`}
+          >
+            Blog
+          </a>
+        </li>
+        <li>
+          <a
             href="/contact"
             class={`text-sm font-body tracking-wider uppercase transition-colors hover:text-secondary ${
               isActive('/contact') ? 'text-secondary font-medium' : 'text-text-dark'
@@ -150,6 +160,16 @@ const isServicesActive = currentPath.startsWith('/usluge');
             }`}
           >
             Portfolio
+          </a>
+        </li>
+        <li>
+          <a
+            href="/blog"
+            class={`block px-6 py-3 text-sm font-body tracking-wider uppercase transition-colors hover:bg-primary ${
+              isActive('/blog') ? 'text-secondary font-medium' : 'text-text-dark'
+            }`}
+          >
+            Blog
           </a>
         </li>
         <li>
