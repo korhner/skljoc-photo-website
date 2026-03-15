@@ -9,12 +9,20 @@ const navItems = [
   { href: '/contact', label: 'Kontakt' }
 ];
 
+const serviceItems = [
+  { href: '/usluge/deciji-rodjendani', label: 'Dečiji rođendani' },
+  { href: '/usluge/porodicna-fotografisanja', label: 'Porodična fotografisanja' },
+  { href: '/usluge/drustvene-mreze', label: 'Društvene mreže' },
+];
+
 const isActive = (href: string) => {
   if (href === '/') {
     return currentPath === href;
   }
   return currentPath.startsWith(href);
 };
+
+const isServicesActive = currentPath.startsWith('/usluge');
 ---
 
 <header class="fixed top-0 left-0 right-0 bg-white z-50 shadow-sm">
@@ -34,34 +42,126 @@ const isActive = (href: string) => {
 
       <!-- Desktop Navigation -->
       <ul class="hidden md:flex items-center gap-8">
-        {navItems.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              class={`text-sm font-body tracking-wider uppercase transition-colors hover:text-secondary ${
-                isActive(item.href) ? 'text-secondary font-medium' : 'text-text-dark'
-              }`}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
+        <li>
+          <a
+            href="/"
+            class={`text-sm font-body tracking-wider uppercase transition-colors hover:text-secondary ${
+              isActive('/') ? 'text-secondary font-medium' : 'text-text-dark'
+            }`}
+          >
+            Početna
+          </a>
+        </li>
+
+        <!-- Usluge Dropdown -->
+        <li class="services-dropdown relative">
+          <button
+            class={`text-sm font-body tracking-wider uppercase transition-colors hover:text-secondary flex items-center gap-1 ${
+              isServicesActive ? 'text-secondary font-medium' : 'text-text-dark'
+            }`}
+            type="button"
+          >
+            Usluge
+            <i class="fas fa-chevron-down text-[10px] transition-transform duration-200"></i>
+          </button>
+          <ul class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white shadow-lg rounded-lg py-2 min-w-[240px] opacity-0 invisible transition-all duration-200">
+            {serviceItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class={`block px-5 py-2.5 text-sm font-body transition-colors hover:bg-primary/30 hover:text-secondary whitespace-nowrap ${
+                    isActive(item.href) ? 'text-secondary font-medium' : 'text-text-dark'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+
+        <li>
+          <a
+            href="/portfolio"
+            class={`text-sm font-body tracking-wider uppercase transition-colors hover:text-secondary ${
+              isActive('/portfolio') ? 'text-secondary font-medium' : 'text-text-dark'
+            }`}
+          >
+            Portfolio
+          </a>
+        </li>
+        <li>
+          <a
+            href="/contact"
+            class={`text-sm font-body tracking-wider uppercase transition-colors hover:text-secondary ${
+              isActive('/contact') ? 'text-secondary font-medium' : 'text-text-dark'
+            }`}
+          >
+            Kontakt
+          </a>
+        </li>
       </ul>
 
       <!-- Mobile Navigation -->
       <ul class="nav-links fixed top-16 right-0 w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 md:hidden">
-        {navItems.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              class={`block px-6 py-3 text-sm font-body tracking-wider uppercase transition-colors hover:bg-primary ${
-                isActive(item.href) ? 'text-secondary font-medium' : 'text-text-dark'
-              }`}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
+        <li>
+          <a
+            href="/"
+            class={`block px-6 py-3 text-sm font-body tracking-wider uppercase transition-colors hover:bg-primary ${
+              isActive('/') ? 'text-secondary font-medium' : 'text-text-dark'
+            }`}
+          >
+            Početna
+          </a>
+        </li>
+
+        <!-- Mobile Usluge -->
+        <li>
+          <button
+            class={`mobile-services-toggle w-full text-left px-6 py-3 text-sm font-body tracking-wider uppercase transition-colors hover:bg-primary flex items-center justify-between ${
+              isServicesActive ? 'text-secondary font-medium' : 'text-text-dark'
+            }`}
+            type="button"
+          >
+            Usluge
+            <i class="fas fa-chevron-down text-[10px] transition-transform duration-200"></i>
+          </button>
+          <ul class="mobile-services-menu hidden bg-primary/10">
+            {serviceItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class={`block px-10 py-2.5 text-sm font-body transition-colors hover:bg-primary/30 ${
+                    isActive(item.href) ? 'text-secondary font-medium' : 'text-text-dark'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+
+        <li>
+          <a
+            href="/portfolio"
+            class={`block px-6 py-3 text-sm font-body tracking-wider uppercase transition-colors hover:bg-primary ${
+              isActive('/portfolio') ? 'text-secondary font-medium' : 'text-text-dark'
+            }`}
+          >
+            Portfolio
+          </a>
+        </li>
+        <li>
+          <a
+            href="/contact"
+            class={`block px-6 py-3 text-sm font-body tracking-wider uppercase transition-colors hover:bg-primary ${
+              isActive('/contact') ? 'text-secondary font-medium' : 'text-text-dark'
+            }`}
+          >
+            Kontakt
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
@@ -83,4 +183,33 @@ const isActive = (href: string) => {
   .nav-links.active {
     transform: translateX(0);
   }
+
+  /* Desktop dropdown */
+  .services-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .services-dropdown:hover .fa-chevron-down {
+    transform: rotate(180deg);
+  }
+
+  /* Mobile submenu open */
+  .mobile-services-toggle.open .fa-chevron-down {
+    transform: rotate(180deg);
+  }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileToggle = document.querySelector('.mobile-services-toggle');
+    const mobileMenu = document.querySelector('.mobile-services-menu');
+
+    if (mobileToggle && mobileMenu) {
+      mobileToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileToggle.classList.toggle('open');
+      });
+    }
+  });
+</script>

@@ -9,6 +9,7 @@ export interface Service {
   icon: string;
   title: string;
   description: string;
+  href: string;
   packages: {
     standard: ServicePackage;
     premium: ServicePackage;
@@ -20,6 +21,7 @@ const services: Service[] = [
     icon: "🎂",
     title: "Dečiji rođendani",
     description: "Smeh, baloni, mrvice torte na nosu - zabeležavam svaki dragoceni trenutak dok vi uživate u slavlju.",
+    href: "/usluge/deciji-rodjendani",
     packages: {
       standard: {
         name: "Standard",
@@ -45,6 +47,7 @@ const services: Service[] = [
     icon: "👨‍👩‍👧‍👦",
     title: "Porodična fotografisanja",
     description: "Bilo da želite piknik u prirodi, šetnju kroz grad ili nežne trenutke kod kuće - fotografisanje će biti prilagođeno Vama i Vašoj priči.",
+    href: "/usluge/porodicna-fotografisanja",
     packages: {
       standard: {
         name: "Standard",
@@ -73,6 +76,7 @@ const services: Service[] = [
     icon: "👔",
     title: "Društvene mreže",
     description: "Verujem da svako nosi nešto jedinstveno - pogled, osmeh, energiju. Bilo da ti trebaju poslovni portreti za Linkedin ili jednostavno želiš da se istakneš na društvenim mrežama.",
+    href: "/usluge/drustvene-mreze",
     packages: {
       standard: {
         name: "CV/LinkedIn",
@@ -164,9 +168,14 @@ const services: Service[] = [
         </div>
       </div>
 
-      <a href="/contact" class="btn-service mt-6 block text-center bg-secondary text-white py-3 px-6 rounded-lg hover:bg-accent transition-colors">
-        Zakaži termin
-      </a>
+      <div class="mt-6 flex flex-col gap-3">
+        <a href="/contact" class="btn-service block text-center bg-secondary text-white py-3 px-6 rounded-lg hover:bg-accent transition-colors">
+          Zakaži termin
+        </a>
+        <a href={service.href} class="block text-center text-secondary py-2 px-6 rounded-lg border border-secondary/30 hover:bg-secondary/5 transition-colors text-sm">
+          Saznaj više →
+        </a>
+      </div>
     </div>
   ))}
 </div>

@@ -1,0 +1,314 @@
+---
+import BaseLayout from '@components/layout/BaseLayout.astro';
+import Button from '@components/ui/Button.astro';
+
+const galleryImages = [
+  { src: '/images/optimized/children/407A9751.webp', alt: 'Dečiji rođendan - torta' },
+  { src: '/images/optimized/children/407A0446.webp', alt: 'Dečiji rođendan - zabava' },
+  { src: '/images/optimized/children/407A1354.webp', alt: 'Dečiji rođendan - igra' },
+  { src: '/images/optimized/children/407A0808.webp', alt: 'Dečiji rođendan - slavlje' },
+  { src: '/images/optimized/children/407A2654.webp', alt: 'Dečiji rođendan - osmesi' },
+  { src: '/images/optimized/children/407A5673.webp', alt: 'Dečiji rođendan - proslava' },
+];
+
+const faqs = [
+  {
+    question: 'Koliko unapred treba da rezervišem termin za rođendan?',
+    answer: 'Preporučujem rezervaciju 4-6 nedelja unapred, posebno tokom vikenda i prazničnih sezona kada su termini najtraženiji.'
+  },
+  {
+    question: 'Da li dolazite na lokaciju proslave?',
+    answer: 'Da! Dolazim na bilo koju lokaciju u Beogradu - igraonice, restorane, parkove ili vaš dom. Za lokacije van Beograda, kontaktirajte me za dogovor.'
+  },
+  {
+    question: 'Kada ćemo dobiti fotografije?',
+    answer: 'Obrađene fotografije dobijate u roku od 2 nedelje putem online galerije. Ubrzana isporuka je moguća na zahtev.'
+  },
+  {
+    question: 'Da li mogu da biram koje fotografije će biti obrađene?',
+    answer: 'Naravno! Nakon fotografisanja, biram i obrađujem najlepše trenutke. Sve fotografije dobijate u digitalnom formatu spremne za štampu i deljenje.'
+  }
+];
+---
+
+<BaseLayout
+  title="Fotografisanje dečijih rođendana u Beogradu"
+  description="Profesionalno fotografisanje dečijih rođendana u Beogradu. Zabeležite smeh, igru i radost vašeg deteta na najlepši mogući način. Paketi već od 70€."
+  keywords="fotograf dečiji rođendan Beograd, fotografisanje rođendana, dečiji fotograf, foto rođendan cena, fotograf za decu Beograd"
+  ogImage="https://www.draganakorhner.photography/images/optimized/children/407A9751.webp"
+>
+  <!-- Hero Section -->
+  <section class="relative min-h-[60vh] flex items-center mt-16">
+    <div class="absolute inset-0">
+      <img
+        src="/images/optimized/children/407A9751.webp"
+        alt="Fotografisanje dečijeg rođendana"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-black/20"></div>
+    </div>
+    <div class="container relative z-10">
+      <div class="max-w-2xl text-white">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading mb-6">
+          Dečiji rođendani
+        </h1>
+        <p class="text-lg md:text-xl mb-8 text-white/90">
+          Smeh, baloni, mrvice torte na nosu — zabeležavam svaki dragoceni trenutak dok vi uživate u slavlju.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <Button href="/contact">Zakažite termin</Button>
+          <Button href="#paketi" variant="outline" class="!border-white !text-white hover:!bg-white hover:!text-text-dark">Pogledajte pakete</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O usluzi -->
+  <section class="py-20">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-heading mb-6">
+            Svaki rođendan je <span class="highlight">posebna priča</span>
+          </h2>
+          <p class="text-text-light mb-4">
+            Dečiji rođendani su puni spontanih, nežnih i urnebesnih trenutaka koji se dešavaju u trenu.
+            Moj zadatak je da budem tu, nenametljivo, i da uhvatim svaki osmeh, zagrljaj i iznenađeni pogled
+            dok vaše dete duva svećice.
+          </p>
+          <p class="text-text-light mb-4">
+            Ne režiram scene — pratim priču onako kako se odvija. Rezultat su autentične fotografije
+            pune emocija koje ćete rado listati godinama.
+          </p>
+          <p class="text-text-light">
+            Fotografišem u igraonicama, restoranima, parkovima i vašim domovima širom Beograda.
+            Samo vi uživajte u proslavi — ja ću se pobrinuti za uspomene.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <img
+            src="/images/optimized/children/407A1770.webp"
+            alt="Deca na rođendanu"
+            class="rounded-lg shadow-lg w-full h-auto"
+          />
+          <img
+            src="/images/optimized/children/407A0887.webp"
+            alt="Radost na rođendanu"
+            class="rounded-lg shadow-lg w-full h-auto mt-8"
+          />
+          <img
+            src="/images/optimized/children/407A2467.webp"
+            alt="Dečija proslava"
+            class="rounded-lg shadow-lg w-full h-auto"
+          />
+          <img
+            src="/images/optimized/children/407A5976.webp"
+            alt="Rođendansko veselje"
+            class="rounded-lg shadow-lg w-full h-auto mt-8"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kako izgleda proces -->
+  <section class="py-20 bg-primary/10">
+    <div class="container">
+      <h2 class="text-3xl md:text-4xl font-heading text-center mb-12">
+        Kako <span class="highlight">izgleda</span> proces?
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-secondary text-2xl font-heading">1</span>
+          </div>
+          <h3 class="font-heading text-lg mb-2">Kontakt</h3>
+          <p class="text-text-light text-sm">Javite mi se i dogovorimo datum, vreme i lokaciju proslave.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-secondary text-2xl font-heading">2</span>
+          </div>
+          <h3 class="font-heading text-lg mb-2">Fotografisanje</h3>
+          <p class="text-text-light text-sm">Dolazim na lokaciju i nenametljivo beležim sve posebne trenutke.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-secondary text-2xl font-heading">3</span>
+          </div>
+          <h3 class="font-heading text-lg mb-2">Obrada</h3>
+          <p class="text-text-light text-sm">Pažljivo biram i obrađujem najlepše fotografije.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-secondary text-2xl font-heading">4</span>
+          </div>
+          <h3 class="font-heading text-lg mb-2">Isporuka</h3>
+          <p class="text-text-light text-sm">U roku od 2 nedelje dobijate online galeriju sa svim fotografijama.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paketi -->
+  <section id="paketi" class="py-20">
+    <div class="container">
+      <h2 class="text-3xl md:text-4xl font-heading text-center mb-4">
+        Izaberite <span class="highlight">paket</span>
+      </h2>
+      <p class="text-text-light text-center max-w-2xl mx-auto mb-12">
+        Dva paketa prilagođena različitim potrebama — od manjih proslava do velikih rođendanskih zabava.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- Standard paket -->
+        <div class="bg-white rounded-xl shadow-lg p-8 border border-secondary/10 hover:shadow-xl transition-shadow">
+          <h3 class="text-2xl font-heading mb-2">Standard</h3>
+          <p class="text-text-light mb-6">Za manje proslave i intimna okupljanja</p>
+          <div class="text-center mb-6">
+            <span class="text-5xl font-heading text-secondary">70€</span>
+          </div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-secondary bg-secondary/10 w-6 h-6 rounded-full flex items-center justify-center text-xs"></i>
+              <span>Trajanje: 1.5h</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-secondary bg-secondary/10 w-6 h-6 rounded-full flex items-center justify-center text-xs"></i>
+              <span>80 fotografija</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-secondary bg-secondary/10 w-6 h-6 rounded-full flex items-center justify-center text-xs"></i>
+              <span>Osnovna obrada fotografija</span>
+            </li>
+          </ul>
+          <Button href="/contact" class="w-full text-center">Zakažite termin</Button>
+        </div>
+
+        <!-- Premium paket -->
+        <div class="bg-white rounded-xl shadow-lg p-8 border-2 border-secondary relative hover:shadow-xl transition-shadow">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-white px-4 py-1 rounded-full text-sm">
+            Najpopularniji
+          </div>
+          <h3 class="text-2xl font-heading mb-2">Premium</h3>
+          <p class="text-text-light mb-6">Za veće proslave sa više sadržaja</p>
+          <div class="text-center mb-6">
+            <span class="text-5xl font-heading text-secondary">100€</span>
+          </div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-secondary bg-secondary/10 w-6 h-6 rounded-full flex items-center justify-center text-xs"></i>
+              <span>Trajanje: 2.5h</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-secondary bg-secondary/10 w-6 h-6 rounded-full flex items-center justify-center text-xs"></i>
+              <span>100 fotografija</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-secondary bg-secondary/10 w-6 h-6 rounded-full flex items-center justify-center text-xs"></i>
+              <span>Osnovna obrada fotografija</span>
+            </li>
+          </ul>
+          <Button href="/contact" class="w-full text-center">Zakažite termin</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galerija -->
+  <section class="py-20 bg-primary/10">
+    <div class="container">
+      <h2 class="text-3xl md:text-4xl font-heading text-center mb-12">
+        Iz mog <span class="highlight">objektiva</span>
+      </h2>
+      <div class="masonry-gallery">
+        {galleryImages.map((image) => (
+          <div class="masonry-item group relative overflow-hidden rounded-lg shadow-md">
+            <img
+              src={image.src}
+              alt={image.alt}
+              class="w-full h-auto group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <Button href="/portfolio" variant="outline">Pogledajte ceo portfolio</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20">
+    <div class="container">
+      <h2 class="text-3xl md:text-4xl font-heading text-center mb-12">
+        Često postavljana <span class="highlight">pitanja</span>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        {faqs.map((faq) => (
+          <div class="bg-white rounded-lg p-6 shadow-sm">
+            <h3 class="font-heading text-lg mb-3">{faq.question}</h3>
+            <p class="text-text-light text-sm">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-secondary/10">
+    <div class="container text-center">
+      <h2 class="text-3xl md:text-4xl font-heading mb-6">
+        Spremni da <span class="highlight">sačuvamo</span> uspomene sa proslave?
+      </h2>
+      <p class="text-text-light text-lg mb-8 max-w-2xl mx-auto">
+        Kontaktirajte me danas i obezbedite termin za fotografisanje vašeg sledećeg rođendana.
+      </p>
+      <Button href="/contact">Zakažite fotografisanje</Button>
+    </div>
+  </section>
+</BaseLayout>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Fotografisanje dečijih rođendana",
+  "description": "Profesionalno fotografisanje dečijih rođendana u Beogradu. Autentične fotografije pune emocija sa proslave vašeg deteta.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Dragana Korhner Photography",
+    "telephone": "+381626618920",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Beograd",
+      "addressCountry": "RS"
+    }
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Beograd"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Paketi za dečije rođendane",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "Standard paket",
+        "price": "70",
+        "priceCurrency": "EUR",
+        "description": "1.5h fotografisanja, 80 fotografija, osnovna obrada"
+      },
+      {
+        "@type": "Offer",
+        "name": "Premium paket",
+        "price": "100",
+        "priceCurrency": "EUR",
+        "description": "2.5h fotografisanja, 100 fotografija, osnovna obrada"
+      }
+    ]
+  }
+}
+</script>

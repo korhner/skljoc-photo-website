@@ -8,8 +8,20 @@ import ServiceCards from '@components/ui/ServiceCards.astro';
   title="Fotograf za dečije rođendane i portrete u Beogradu"
   description="Profesionalni fotograf za dečije rođendane i portrete u Beogradu. Dragana Korhner nudi autentične i prirodne fotografije vaših najdragocenijih trenutaka."
 >
+  <!-- Hero -->
+  <section class="pt-28 pb-8">
+    <div class="container text-center">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-heading mb-3">
+        Profesionalni <span class="highlight">fotograf</span> u Beogradu
+      </h1>
+      <p class="text-text-light text-lg max-w-2xl mx-auto">
+        Fotografije dečijih rođendana, porodičnih trenutaka i portreta za društvene mreže
+      </p>
+    </div>
+  </section>
+
   <!-- About Preview -->
-  <section class="py-20 mt-16">
+  <section class="py-20">
     <div class="container">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
@@ -63,7 +75,7 @@ import ServiceCards from '@components/ui/ServiceCards.astro';
     <div class="container">
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="group relative overflow-hidden rounded-lg shadow-lg">
+        <a href="/usluge/deciji-rodjendani" class="group relative overflow-hidden rounded-lg shadow-lg block">
           <img
             src="/images/optimized/children/407A9751.webp"
             alt="Dečiji rođendani"
@@ -75,9 +87,9 @@ import ServiceCards from '@components/ui/ServiceCards.astro';
               <p class="text-sm">Radost i sreća dečijih proslava</p>
             </div>
           </div>
-        </div>
+        </a>
 
-        <div class="group relative overflow-hidden rounded-lg shadow-lg">
+        <a href="/usluge/porodicna-fotografisanja" class="group relative overflow-hidden rounded-lg shadow-lg block">
           <img
             src="/images/optimized/family/407A3510.webp"
             alt="Porodične fotografije"
@@ -89,9 +101,9 @@ import ServiceCards from '@components/ui/ServiceCards.astro';
               <p class="text-sm">Elegantni i prirodni porodični portreti</p>
             </div>
           </div>
-        </div>
+        </a>
 
-        <div class="group relative overflow-hidden rounded-lg shadow-lg">
+        <a href="/usluge/drustvene-mreze" class="group relative overflow-hidden rounded-lg shadow-lg block">
           <img
             src="/images/optimized/social/407A3072.webp"
             alt="Društvene mreže"
@@ -103,7 +115,7 @@ import ServiceCards from '@components/ui/ServiceCards.astro';
               <p class="text-sm">Fotografije za vaše online prisustvo</p>
             </div>
           </div>
-        </div>
+        </a>
       </div>
 
       <div class="text-center mt-12">

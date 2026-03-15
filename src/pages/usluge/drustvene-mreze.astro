@@ -1,0 +1,327 @@
+---
+import BaseLayout from '@components/layout/BaseLayout.astro';
+import Button from '@components/ui/Button.astro';
+
+const galleryImages = [
+  { src: '/images/optimized/social/407A3072.webp', alt: 'Profesionalni portret' },
+  { src: '/images/optimized/social/407A2201.webp', alt: 'LinkedIn fotografija' },
+  { src: '/images/optimized/social/407A2233.webp', alt: 'Poslovni portret' },
+  { src: '/images/optimized/social/407A3064.webp', alt: 'Portret za društvene mreže' },
+  { src: '/images/optimized/social/407A2290.webp', alt: 'Profesionalna fotografija' },
+  { src: '/images/optimized/social/407A3054-2.webp', alt: 'Fotografija za online profil' },
+];
+
+const faqs = [
+  {
+    question: 'Da li moram da imam profesionalnu garderobu?',
+    answer: 'Ne mora biti strogo formalno! Prilagođavamo garderobu vašem stilu i nameni fotografija. Za LinkedIn su poželjniji poslovniji tonovi, dok za Instagram može biti opuštenije.'
+  },
+  {
+    question: 'Gde se održava fotografisanje?',
+    answer: 'Fotografisanje se može organizovati na otvorenom, u kafićima, vašem radnom prostoru ili na bilo kojoj lokaciji u Beogradu koja odgovara vašem brendu.'
+  },
+  {
+    question: 'Koliko fotografija dobijem?',
+    answer: 'CV/LinkedIn paket uključuje 5 profesionalno obrađenih fotografija, dok paket za mreže uključuje 15 fotografija sa različitim uglovima i pozama.'
+  },
+  {
+    question: 'Da li fotografije mogu da se koriste za štampu?',
+    answer: 'Apsolutno! Sve fotografije su u visokoj rezoluciji i pogodne kako za digitalno korišćenje tako i za profesionalnu štampu.'
+  }
+];
+---
+
+<BaseLayout
+  title="Fotografije za društvene mreže i LinkedIn u Beogradu"
+  description="Profesionalne fotografije za LinkedIn, Instagram i društvene mreže u Beogradu. Istaknite se sa kvalitetnim vizuelnim sadržajem. Paketi već od 40€."
+  keywords="fotograf za LinkedIn Beograd, profesionalne fotografije za društvene mreže, poslovni portret Beograd, Instagram fotograf, headshot Beograd"
+  ogImage="https://www.draganakorhner.photography/images/optimized/social/407A3072.webp"
+>
+  <!-- Hero Section -->
+  <section class="relative min-h-[60vh] flex items-center mt-16">
+    <div class="absolute inset-0">
+      <img
+        src="/images/optimized/social/407A3072.webp"
+        alt="Fotografije za društvene mreže"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-black/20"></div>
+    </div>
+    <div class="container relative z-10">
+      <div class="max-w-2xl text-white">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading mb-6">
+          Društvene mreže
+        </h1>
+        <p class="text-lg md:text-xl mb-8 text-white/90">
+          Verujem da svako nosi nešto jedinstveno — pogled, osmeh, energiju.
+          Istaknite se na LinkedIn-u, Instagramu i drugim mrežama sa fotografijama koje ostavljaju utisak.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <Button href="/contact">Zakažite termin</Button>
+          <Button href="#paketi" variant="outline" class="!border-white !text-white hover:!bg-white hover:!text-text-dark">Pogledajte pakete</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O usluzi -->
+  <section class="py-20">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-heading mb-6">
+            Vaš online <span class="highlight">identitet</span> počinje fotografijom
+          </h2>
+          <p class="text-text-light mb-4">
+            U svetu gde prvi utisak često nastaje online, kvalitetna fotografija može da napravi
+            ogromnu razliku. Bilo da tražite novi posao, gradite lični brend ili jednostavno
+            želite da se istaknete — profesionalna fotografija je vaša vizit-karta.
+          </p>
+          <p class="text-text-light mb-4">
+            Moj pristup je opušten i prirodan. Nema ukočenih poza — fokus je na tome da
+            uhvatimo vašu autentičnu energiju i samopouzdanje. Svaka fotografija prolazi
+            kroz profesionalno retuširanje za savršen završni rezultat.
+          </p>
+          <p class="text-text-light">
+            Nudim dva paketa: brzi CV/LinkedIn paket za one kojima treba samo nekoliko
+            profesionalnih fotografija, i širi paket za mreže sa više varijacija i poza.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <img
+            src="/images/optimized/social/407A2244.webp"
+            alt="Profesionalni portret"
+            class="rounded-lg shadow-lg w-full h-auto"
+          />
+          <img
+            src="/images/optimized/social/407A2248.webp"
+            alt="Poslovni portret"
+            class="rounded-lg shadow-lg w-full h-auto mt-8"
+          />
+          <img
+            src="/images/optimized/social/407A3069.webp"
+            alt="Portret za mreže"
+            class="rounded-lg shadow-lg w-full h-auto"
+          />
+          <img
+            src="/images/optimized/social/407A3079.webp"
+            alt="Fotografija za Instagram"
+            class="rounded-lg shadow-lg w-full h-auto mt-8"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Za koga je ova usluga -->
+  <section class="py-20 bg-primary/10">
+    <div class="container">
+      <h2 class="text-3xl md:text-4xl font-heading text-center mb-12">
+        Za koga je <span class="highlight">ova usluga</span>?
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl p-8 shadow-sm text-center">
+          <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fab fa-linkedin text-secondary text-2xl"></i>
+          </div>
+          <h3 class="font-heading text-lg mb-3">Profesionalci</h3>
+          <p class="text-text-light text-sm">
+            Potrebna vam je profesionalna fotografija za LinkedIn, CV ili poslovnu prezentaciju koja ostavlja utisak.
+          </p>
+        </div>
+        <div class="bg-white rounded-xl p-8 shadow-sm text-center">
+          <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fab fa-instagram text-secondary text-2xl"></i>
+          </div>
+          <h3 class="font-heading text-lg mb-3">Kreativci i influenseri</h3>
+          <p class="text-text-light text-sm">
+            Želite kvalitetan vizuelni sadržaj za Instagram, blog ili lični brend koji vas izdvaja.
+          </p>
+        </div>
+        <div class="bg-white rounded-xl p-8 shadow-sm text-center">
+          <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-store text-secondary text-2xl"></i>
+          </div>
+          <h3 class="font-heading text-lg mb-3">Preduzetnici</h3>
+          <p class="text-text-light text-sm">
+            Gradite brend i potrebne su vam profesionalne fotografije za sajt, portfolio ili promotivne materijale.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paketi -->
+  <section id="paketi" class="py-20">
+    <div class="container">
+      <h2 class="text-3xl md:text-4xl font-heading text-center mb-4">
+        Izaberite <span class="highlight">paket</span>
+      </h2>
+      <p class="text-text-light text-center max-w-2xl mx-auto mb-12">
+        Od brzog headshot-a do kompletnog sadržaja za mreže — izaberite ono što vam odgovara.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- CV/LinkedIn paket -->
+        <div class="bg-white rounded-xl shadow-lg p-8 border border-secondary/10 hover:shadow-xl transition-shadow">
+          <h3 class="text-2xl font-heading mb-2">CV / LinkedIn</h3>
+          <p class="text-text-light mb-6">Za profesionalnu prezentaciju i prvi utisak</p>
+          <div class="text-center mb-6">
+            <span class="text-5xl font-heading text-secondary">40€</span>
+          </div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-secondary bg-secondary/10 w-6 h-6 rounded-full flex items-center justify-center text-xs"></i>
+              <span>Trajanje: 30 min.</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-secondary bg-secondary/10 w-6 h-6 rounded-full flex items-center justify-center text-xs"></i>
+              <span>5 profesionalnih fotografija</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-secondary bg-secondary/10 w-6 h-6 rounded-full flex items-center justify-center text-xs"></i>
+              <span>Za profesionalnu prezentaciju</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-secondary bg-secondary/10 w-6 h-6 rounded-full flex items-center justify-center text-xs"></i>
+              <span>Osnovno retuširanje</span>
+            </li>
+          </ul>
+          <Button href="/contact" class="w-full text-center">Zakažite termin</Button>
+        </div>
+
+        <!-- Mreže paket -->
+        <div class="bg-white rounded-xl shadow-lg p-8 border-2 border-secondary relative hover:shadow-xl transition-shadow">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-white px-4 py-1 rounded-full text-sm">
+            Najpopularniji
+          </div>
+          <h3 class="text-2xl font-heading mb-2">Mreže</h3>
+          <p class="text-text-light mb-6">Za društvene mreže i promotivni sadržaj</p>
+          <div class="text-center mb-6">
+            <span class="text-5xl font-heading text-secondary">70€</span>
+          </div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-secondary bg-secondary/10 w-6 h-6 rounded-full flex items-center justify-center text-xs"></i>
+              <span>Trajanje: 1h</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-secondary bg-secondary/10 w-6 h-6 rounded-full flex items-center justify-center text-xs"></i>
+              <span>15 obrađenih fotografija</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-secondary bg-secondary/10 w-6 h-6 rounded-full flex items-center justify-center text-xs"></i>
+              <span>Za mreže i promociju</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-secondary bg-secondary/10 w-6 h-6 rounded-full flex items-center justify-center text-xs"></i>
+              <span>Profesionalno retuširanje</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-secondary bg-secondary/10 w-6 h-6 rounded-full flex items-center justify-center text-xs"></i>
+              <span>Različiti uglovi i poze</span>
+            </li>
+          </ul>
+          <Button href="/contact" class="w-full text-center">Zakažite termin</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galerija -->
+  <section class="py-20 bg-primary/10">
+    <div class="container">
+      <h2 class="text-3xl md:text-4xl font-heading text-center mb-12">
+        Iz mog <span class="highlight">objektiva</span>
+      </h2>
+      <div class="masonry-gallery">
+        {galleryImages.map((image) => (
+          <div class="masonry-item group relative overflow-hidden rounded-lg shadow-md">
+            <img
+              src={image.src}
+              alt={image.alt}
+              class="w-full h-auto group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <Button href="/portfolio" variant="outline">Pogledajte ceo portfolio</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20">
+    <div class="container">
+      <h2 class="text-3xl md:text-4xl font-heading text-center mb-12">
+        Često postavljana <span class="highlight">pitanja</span>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        {faqs.map((faq) => (
+          <div class="bg-white rounded-lg p-6 shadow-sm">
+            <h3 class="font-heading text-lg mb-3">{faq.question}</h3>
+            <p class="text-text-light text-sm">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-secondary/10">
+    <div class="container text-center">
+      <h2 class="text-3xl md:text-4xl font-heading mb-6">
+        Spremni da <span class="highlight">unapredite</span> svoj online profil?
+      </h2>
+      <p class="text-text-light text-lg mb-8 max-w-2xl mx-auto">
+        Kontaktirajte me danas i hajde da stvorimo fotografije koje će vas predstaviti u najboljem svetlu.
+      </p>
+      <Button href="/contact">Zakažite fotografisanje</Button>
+    </div>
+  </section>
+</BaseLayout>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Fotografije za društvene mreže i LinkedIn",
+  "description": "Profesionalne fotografije za LinkedIn, Instagram i društvene mreže u Beogradu. Poslovni portreti i sadržaj za online prisustvo.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Dragana Korhner Photography",
+    "telephone": "+381626618920",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Beograd",
+      "addressCountry": "RS"
+    }
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Beograd"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Paketi za društvene mreže",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "CV/LinkedIn paket",
+        "price": "40",
+        "priceCurrency": "EUR",
+        "description": "30min fotografisanja, 5 profesionalnih fotografija, osnovno retuširanje"
+      },
+      {
+        "@type": "Offer",
+        "name": "Mreže paket",
+        "price": "70",
+        "priceCurrency": "EUR",
+        "description": "1h fotografisanja, 15 obrađenih fotografija, profesionalno retuširanje, različiti uglovi i poze"
+      }
+    ]
+  }
+}
+</script>
