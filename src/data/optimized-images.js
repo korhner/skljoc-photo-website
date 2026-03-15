@@ -721,5 +721,45 @@ export const optimizedGalleryItems = [
     "title": "Zabava sa prijateljima",
     "width": 800,
     "height": 1200
+  },
+  {
+    "src": "/images/optimized/social/407A4835-2.webp",
+    "alt": "Personal brand fotografija",
+    "category": "social",
+    "title": "Profesionalni portret",
+    "width": 800,
+    "height": 1200
+  },
+  {
+    "src": "/images/optimized/social/407A4876.webp",
+    "alt": "Personal brand fotografija",
+    "category": "social",
+    "title": "Lični brend",
+    "width": 800,
+    "height": 1200
+  },
+  {
+    "src": "/images/optimized/social/407A4879.webp",
+    "alt": "Personal brand fotografija",
+    "category": "social",
+    "title": "Poslovni identitet",
+    "width": 800,
+    "height": 1200
+  },
+  {
+    "src": "/images/optimized/social/407A4944.webp",
+    "alt": "Personal brand fotografija",
+    "category": "social",
+    "title": "Autentičan portret",
+    "width": 800,
+    "height": 1200
+  },
+  {
+    "src": "/images/optimized/social/407A4952.webp",
+    "alt": "Personal brand fotografija",
+    "category": "social",
+    "title": "Profesionalna prezentacija",
+    "width": 800,
+    "height": 1200
   }
 ];
